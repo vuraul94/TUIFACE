@@ -24,22 +24,6 @@
             <Property name="text" type="java.lang.String" value="Modulos"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="mniProductos">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Registro Productos"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniProductosActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="mniProveedores">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Registro Proveedores"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniProveedoresActionPerformed"/>
-              </Events>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mniCompra">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Compra"/>
@@ -53,14 +37,30 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniVentaActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="mniReporte">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Reporte mensual"/>
-              </Properties>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mniInventario">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Inventario"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mniProveedores">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reg. Proveedores"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniProveedoresActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mniProductos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reg. Productos"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniProductosActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mniReporte">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reporte"/>
               </Properties>
             </MenuItem>
           </SubComponents>
@@ -121,6 +121,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="btnVenta" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Component id="btnInventario" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCompra" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
               </Group>
@@ -131,7 +132,9 @@
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                          <Component id="btnCompra" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btnVenta" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btnInventario" min="-2" max="-2" attributes="0"/>
@@ -166,6 +169,14 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Inventario"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnCompra">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Compra"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCompraActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

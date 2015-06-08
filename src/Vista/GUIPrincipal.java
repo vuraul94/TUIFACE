@@ -5,6 +5,8 @@
  */
 package Vista;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Né
@@ -31,16 +33,17 @@ public class GUIPrincipal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btnVenta = new javax.swing.JButton();
         btnInventario = new javax.swing.JButton();
+        btnCompra = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnArchivo = new javax.swing.JMenu();
         mniSalir = new javax.swing.JMenuItem();
         mnModulos = new javax.swing.JMenu();
-        mniProductos = new javax.swing.JMenuItem();
-        mniProveedores = new javax.swing.JMenuItem();
         mniCompra = new javax.swing.JMenuItem();
         mniVenta = new javax.swing.JMenuItem();
-        mniReporte = new javax.swing.JMenuItem();
         mniInventario = new javax.swing.JMenuItem();
+        mniProveedores = new javax.swing.JMenuItem();
+        mniProductos = new javax.swing.JMenuItem();
+        mniReporte = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,6 +60,13 @@ public class GUIPrincipal extends javax.swing.JFrame {
 
         btnInventario.setText("Inventario");
 
+        btnCompra.setText("Compra");
+        btnCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCompraActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -67,7 +77,8 @@ public class GUIPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnVenta, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnInventario, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(btnInventario, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnCompra, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(48, 48, 48))
         );
         jPanel1Layout.setVerticalGroup(
@@ -75,7 +86,9 @@ public class GUIPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
+                        .addGap(24, 24, 24)
+                        .addComponent(btnCompra)
+                        .addGap(18, 18, 18)
                         .addComponent(btnVenta)
                         .addGap(18, 18, 18)
                         .addComponent(btnInventario))
@@ -99,22 +112,6 @@ public class GUIPrincipal extends javax.swing.JFrame {
 
         mnModulos.setText("Modulos");
 
-        mniProductos.setText("Registro Productos");
-        mniProductos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniProductosActionPerformed(evt);
-            }
-        });
-        mnModulos.add(mniProductos);
-
-        mniProveedores.setText("Registro Proveedores");
-        mniProveedores.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniProveedoresActionPerformed(evt);
-            }
-        });
-        mnModulos.add(mniProveedores);
-
         mniCompra.setText("Compra");
         mnModulos.add(mniCompra);
 
@@ -126,11 +123,27 @@ public class GUIPrincipal extends javax.swing.JFrame {
         });
         mnModulos.add(mniVenta);
 
-        mniReporte.setText("Reporte mensual");
-        mnModulos.add(mniReporte);
-
         mniInventario.setText("Inventario");
         mnModulos.add(mniInventario);
+
+        mniProveedores.setText("Reg. Proveedores");
+        mniProveedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniProveedoresActionPerformed(evt);
+            }
+        });
+        mnModulos.add(mniProveedores);
+
+        mniProductos.setText("Reg. Productos");
+        mniProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniProductosActionPerformed(evt);
+            }
+        });
+        mnModulos.add(mniProductos);
+
+        mniReporte.setText("Reporte");
+        mnModulos.add(mniReporte);
 
         jMenuBar1.add(mnModulos);
 
@@ -172,10 +185,15 @@ public class GUIPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVentaActionPerformed
 
+    private void btnCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCompraActionPerformed
+
     /**
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCompra;
     private javax.swing.JButton btnInventario;
     private javax.swing.JButton btnVenta;
     private javax.swing.JLabel jLabel2;
@@ -191,4 +209,29 @@ public class GUIPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniSalir;
     private javax.swing.JMenuItem mniVenta;
     // End of variables declaration//GEN-END:variables
+
+    public static final String BTN_COMPRA="Compra", 
+            BTN_VENTA="Venta", 
+            BTN_INVENTARIO="Inventario",
+            MNI_SALIR="Salir",
+            MNI_COMPRA="Compra",
+            MNI_VENTA="Venta",
+            MNI_INVENTARIO="Inventario",
+            MNI_REG_PROVEEDORES="Reg. Proveedores",
+            MNI_REG_PRODUCTO="Reg. Producto",
+            MNI_REPORTE="Reporte";
+    
+    public void escuchar(ActionListener control){
+        this.btnCompra.addActionListener(control);
+        this.btnVenta.addActionListener(control);
+        this.btnInventario.addActionListener(control);
+        this.mniCompra.addActionListener(control);
+        this.mniVenta.addActionListener(control);
+        this.mniInventario.addActionListener(control);
+        this.mniProveedores.addActionListener(control);
+        this.mniProductos.addActionListener(control);
+        this.mniReporte.addActionListener(control);
+    }
+    
+    
 }
