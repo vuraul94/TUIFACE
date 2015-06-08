@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Controlador.ControlGUIPrincipal;
 import java.awt.event.ActionListener;
 
 /**
@@ -13,11 +14,15 @@ import java.awt.event.ActionListener;
  */
 public class GUIPrincipal extends javax.swing.JFrame {
 
+    private ControlGUIPrincipal control;
+
     /**
      * Creates new form GUIPrincipal
      */
     public GUIPrincipal() {
         initComponents();
+        control=new ControlGUIPrincipal();
+        this.escuchar(control);
     }
 
     /**
@@ -231,6 +236,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
         this.mniProveedores.addActionListener(control);
         this.mniProductos.addActionListener(control);
         this.mniReporte.addActionListener(control);
+        this.mniSalir.addActionListener(control);
     }
     
     
