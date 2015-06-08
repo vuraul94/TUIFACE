@@ -29,53 +29,63 @@ public class GUIPrincipal extends javax.swing.JFrame {
 
         jMenuBar1 = new javax.swing.JMenuBar();
         mnArchivo = new javax.swing.JMenu();
+        mniSalir = new javax.swing.JMenuItem();
         mnModulos = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        mniProductos = new javax.swing.JMenuItem();
+        mniProveedores = new javax.swing.JMenuItem();
+        mniCompra = new javax.swing.JMenuItem();
+        mniVenta = new javax.swing.JMenuItem();
+        mniReporte = new javax.swing.JMenuItem();
+        mniInventario = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         mnArchivo.setText("Archivo");
+
+        mniSalir.setText("Salir");
+        mniSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniSalirActionPerformed(evt);
+            }
+        });
+        mnArchivo.add(mniSalir);
+
         jMenuBar1.add(mnArchivo);
 
         mnModulos.setText("Modulos");
 
-        jMenuItem1.setText("Registro Productos");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        mniProductos.setText("Registro Productos");
+        mniProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                mniProductosActionPerformed(evt);
             }
         });
-        mnModulos.add(jMenuItem1);
+        mnModulos.add(mniProductos);
 
-        jMenuItem2.setText("Registro Proveedores");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        mniProveedores.setText("Registro Proveedores");
+        mniProveedores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                mniProveedoresActionPerformed(evt);
             }
         });
-        mnModulos.add(jMenuItem2);
+        mnModulos.add(mniProveedores);
 
-        jMenuItem3.setText("Compra");
-        mnModulos.add(jMenuItem3);
+        mniCompra.setText("Compra");
+        mnModulos.add(mniCompra);
 
-        jMenuItem4.setText("Venta");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        mniVenta.setText("Venta");
+        mniVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                mniVentaActionPerformed(evt);
             }
         });
-        mnModulos.add(jMenuItem4);
+        mnModulos.add(mniVenta);
 
-        jMenuItem5.setText("Reporte mensual");
-        mnModulos.add(jMenuItem5);
+        mniReporte.setText("Reporte mensual");
+        mnModulos.add(mniReporte);
 
-        jMenuItem6.setText("Inventario");
-        mnModulos.add(jMenuItem6);
+        mniInventario.setText("Inventario");
+        mnModulos.add(mniInventario);
 
         jMenuBar1.add(mnModulos);
 
@@ -95,30 +105,35 @@ public class GUIPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void mniProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniProductosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_mniProductosActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void mniProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniProveedoresActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_mniProveedoresActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void mniVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniVentaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_mniVentaActionPerformed
+
+    private void mniSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniSalirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mniSalirActionPerformed
 
     /**
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenu mnArchivo;
     private javax.swing.JMenu mnModulos;
+    private javax.swing.JMenuItem mniCompra;
+    private javax.swing.JMenuItem mniInventario;
+    private javax.swing.JMenuItem mniProductos;
+    private javax.swing.JMenuItem mniProveedores;
+    private javax.swing.JMenuItem mniReporte;
+    private javax.swing.JMenuItem mniSalir;
+    private javax.swing.JMenuItem mniVenta;
     // End of variables declaration//GEN-END:variables
 }
