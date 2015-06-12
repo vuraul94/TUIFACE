@@ -11,18 +11,28 @@ package Modelo;
  */
 public class Producto {
     
+    int idProducto;
     String nombre;
     String descripcion;
     String marca;
     int precio;
     int cantidad;
 
-    public Producto(String nombre, String descripcion, String marca, int precio, int cantidad) {
+    public Producto(int idProducto,String nombre, String descripcion, String marca, int precio, int cantidad) {
+        this.idProducto=idProducto;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.marca = marca;
         this.precio = precio;
         this.cantidad = cantidad;
+    }
+
+    public int getIdProducto() {
+        return idProducto;
+    }
+
+    public void setIdProducto(int idProducto) {
+        this.idProducto = idProducto;
     }
 
     public String getNombre() {

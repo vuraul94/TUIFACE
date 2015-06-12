@@ -17,8 +17,8 @@ public class Computador extends Producto{
     Procesadores procesador;
     
 
-    public Computador(String nombre, String descripcion, String marca, int precio, int cantidad, Memorias rom, Memorias ram, Producto tarjetaMadre,Procesadores procesador) {
-        super(nombre, descripcion, marca, precio, cantidad);
+    public Computador(int idProducto,String nombre, String descripcion, String marca, int precio, int cantidad, Memorias rom, Memorias ram, Producto tarjetaMadre,Procesadores procesador) {
+        super(idProducto,nombre, descripcion, marca, precio, cantidad);
         this.rom=rom;
         this.ram=ram;
         this.tarjetaMadre=tarjetaMadre;

@@ -14,8 +14,8 @@ public class Procesadores extends Producto{
     int nucleos;
     int frecuencia;
 
-    public Procesadores(String nombre, String descripcion, String marca, int precio, int cantidad, int nucleos, int frecuencia) {
-        super(nombre, descripcion, marca, precio, cantidad);
+    public Procesadores(int idProducto,String nombre, String descripcion, String marca, int precio, int cantidad, int nucleos, int frecuencia) {
+        super(idProducto, nombre, descripcion, marca, precio, cantidad);
         this.nucleos=nucleos;
         this.frecuencia=frecuencia;
     }
