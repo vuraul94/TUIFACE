@@ -11,12 +11,14 @@ package Modelo;
  */
 public class Proveedores {
     
+    int idProveedor;
     String nombre;
     String direccion;
     String correo;
     String telefono;
 
-    public Proveedores(String nombre, String direccion, String correo, String telefono) {
+    public Proveedores(int idProveedor,String nombre, String direccion, String correo, String telefono) {
+        this.idProveedor=idProveedor;
         this.nombre = nombre;
         this.direccion = direccion;
         this.correo = correo;
