@@ -5,6 +5,8 @@
  */
 package Vista;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Raul
@@ -192,4 +194,58 @@ public class RegistroProveedores extends javax.swing.JFrame {
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
+
+    public static final String BTN_BUSCAR= "Buscar";
+    public static final String BTN_ELIMINAR="Eliminar";
+    public static final String BTN_MODIFICAR="Modificar";
+    public static final String BTN_REGISTRAR="Registrar";
+    
+   public void escuchar (ActionListener control){
+       this.btnBuscar.addActionListener(control);
+       this.btnEliminar.addActionListener(control);
+       this.btnModificar.addActionListener(control);
+       this.btnRegistrar.addActionListener(control);
+       
+   } 
+ 
+   public String getTxtNombre(){
+    return this.txtNombre.getText().toString(); 
+}
+   public void setTxtNombre(String txtNombre) {
+        this.txtNombre.setText(txtNombre);
+    }
+   
+   public String getTxtTelefono(){
+    return this.txtTelefono.getText().toString(); 
+    
+}
+   
+   public void setTxtTelefono(String txtTelefono) {
+        this.txtTelefono.setText(txtTelefono);
+    }
+   
+   public String getTxtCorreo(){
+    return this.txtCorreo.getText().toString(); 
+}
+   public void setTxtCorreo(String txtCorreo) {
+        this.txtCorreo.setText(txtCorreo);
+    }
+   
+   public String getTxtDireccion(){
+    return this.txtDireccion.getText().toString(); 
+}
+   public void setTxtDireccion(String txtDireccion) {
+        this.txtDireccion.setText(txtDireccion);
+    }
+   
+   public String getTxtID(){
+    return this.txtID.getText().toString();
+   
+}
+   public void setTxtID(String txtID) {
+        this.txtID.setText(txtID);
+    }
+        
+
+
 }
