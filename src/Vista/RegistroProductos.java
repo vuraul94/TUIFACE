@@ -33,9 +33,9 @@ public class RegistroProductos extends javax.swing.JFrame {
     private void initComponents() {
 
         btnProcesadores = new javax.swing.JButton();
-        btnMemorias = new javax.swing.JButton();
         btnComputadores = new javax.swing.JButton();
         btnOtros = new javax.swing.JButton();
+        btnMemorias = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -46,8 +46,6 @@ public class RegistroProductos extends javax.swing.JFrame {
             }
         });
 
-        btnMemorias.setText("Memorias ");
-
         btnComputadores.setText("Computadores");
 
         btnOtros.setText("Otros");
@@ -57,6 +55,8 @@ public class RegistroProductos extends javax.swing.JFrame {
             }
         });
 
+        btnMemorias.setText("Memorias");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -65,14 +65,14 @@ public class RegistroProductos extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnMemorias)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnOtros)
                             .addComponent(btnComputadores)
-                            .addComponent(btnMemorias))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnProcesadores)
-                        .addGap(40, 156, Short.MAX_VALUE))))
+                            .addComponent(btnProcesadores))
+                        .addGap(40, 150, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

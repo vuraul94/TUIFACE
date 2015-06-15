@@ -26,17 +26,17 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="btnMemorias" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btnOtros" min="-2" max="-2" attributes="0"/>
                           <Component id="btnComputadores" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnMemorias" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnProcesadores" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="btnProcesadores" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="40" pref="156" max="32767" attributes="0"/>
+                      <EmptySpace min="40" pref="150" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -47,7 +47,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
               <Component id="btnProcesadores" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Component id="btnMemorias" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnComputadores" min="-2" max="-2" attributes="0"/>
@@ -67,11 +67,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnProcesadoresActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnMemorias">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Memorias "/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JButton" name="btnComputadores">
       <Properties>
         <Property name="text" type="java.lang.String" value="Computadores"/>
@@ -84,6 +79,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOtrosActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnMemorias">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Memorias"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
