@@ -223,7 +223,7 @@ public class GUIPrincipal extends javax.swing.JFrame {
             MNI_VENTA="Venta",
             MNI_INVENTARIO="Inventario",
             MNI_REG_PROVEEDORES="Reg. Proveedores",
-            MNI_REG_PRODUCTO="Reg. Producto",
+            MNI_REG_PRODUCTO="Reg. Productos",
             MNI_REPORTE="Reporte";
     
     public void escuchar(ActionListener control){
