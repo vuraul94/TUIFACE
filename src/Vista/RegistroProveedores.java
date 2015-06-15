@@ -204,8 +204,7 @@ public class RegistroProveedores extends javax.swing.JFrame {
        this.btnBuscar.addActionListener(control);
        this.btnEliminar.addActionListener(control);
        this.btnModificar.addActionListener(control);
-       this.btnRegistrar.addActionListener(control);
-       
+       this.btnRegistrar.addActionListener(control);   
    } 
  
    public String getTxtNombre(){
