@@ -27,21 +27,68 @@ public class RegistroProductos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnProcesadores = new javax.swing.JButton();
+        btnMemorias = new javax.swing.JButton();
+        btnComputadores = new javax.swing.JButton();
+        btnOtros = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        btnProcesadores.setText("Procesadores");
+        btnProcesadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProcesadoresActionPerformed(evt);
+            }
+        });
+
+        btnMemorias.setText("Memorias ");
+
+        btnComputadores.setText("Computadores");
+
+        btnOtros.setText("Otros");
+        btnOtros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOtrosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnOtros)
+                    .addComponent(btnComputadores)
+                    .addComponent(btnMemorias)
+                    .addComponent(btnProcesadores))
+                .addContainerGap(240, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(btnProcesadores)
+                .addGap(18, 18, 18)
+                .addComponent(btnMemorias)
+                .addGap(18, 18, 18)
+                .addComponent(btnComputadores)
+                .addGap(18, 18, 18)
+                .addComponent(btnOtros)
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnProcesadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcesadoresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnProcesadoresActionPerformed
+
+    private void btnOtrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOtrosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnOtrosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -49,5 +96,9 @@ public class RegistroProductos extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnComputadores;
+    private javax.swing.JButton btnMemorias;
+    private javax.swing.JButton btnOtros;
+    private javax.swing.JButton btnProcesadores;
     // End of variables declaration//GEN-END:variables
 }
