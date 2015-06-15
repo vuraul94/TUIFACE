@@ -5,6 +5,8 @@
  */
 package Vista;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Raul
@@ -212,4 +214,69 @@ public class RegistroProcesadores extends javax.swing.JFrame {
     private javax.swing.JTextField txtNucleos;
     private javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables
+
+ public static final String BTN_REGISTRAR= "Registrar";
+    
+   public void escuchar (ActionListener control){
+       this.btnRegistrar.addActionListener(control);  
+   }
+   
+   
+   public String getTxtCantidad(){
+    return this.txtCantidad.getText().toString(); 
+}
+   public void setTxtCantidad(String txtCantidad) {
+        this.txtCantidad.setText(txtCantidad);
+    }
+   
+   public String getTxtDescripcion(){
+    return this.txtDescripción.getText().toString(); 
+}
+   public void setTxtDescripcion(String txtDescripcion) {
+        this.txtDescripción.setText(txtDescripcion);
+    }
+    public String getTxtIdProducto(){
+    return this.txtIdProducto.getText().toString(); 
+}
+   public void setTxtIdProducto(String txtIdProducto) {
+        this.txtIdProducto.setText(txtIdProducto);
+    }
+    public String getTxtMarca(){
+    return this.txtMarca.getText().toString(); 
+}
+   public void setTxtMarca(String txtMarca) {
+        this.txtMarca.setText(txtMarca);
+    }
+   
+    public String getTxtNombre(){
+    return this.txtNombre.getText().toString(); 
+}
+   public void setTxNombre(String txtNombre) {
+        this.txtNombre.setText(txtNombre);
+    }
+   
+    public String getTxtPrecio(){
+    return this.txtPrecio.getText().toString(); 
+}
+
+    public void setTxtPrecio(String txtPrecio) {
+        this.txtPrecio.setText(txtPrecio);
+    }
+   
+    
+     public String getTxtFrecuencia(){
+    return this.txtFrecuencia.getText().toString(); 
+}
+
+    public void setTxtFrecuencia(String txtFrecuencia) {
+        this.txtFrecuencia.setText(txtFrecuencia);
+    }
+    
+    public String getTxtNucleos(){
+    return this.txtNucleos.getText().toString(); 
+}
+
+    public void setTxtNucleos(String txtNucleos) {
+        this.txtNucleos.setText(txtNucleos);
+    }
 }
