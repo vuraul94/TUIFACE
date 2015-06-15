@@ -42,7 +42,7 @@ public class RegistroMemorias extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtIdProducto = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btnRegistrar.setText("Registrar");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
