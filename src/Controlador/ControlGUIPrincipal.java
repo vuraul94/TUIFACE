@@ -5,8 +5,12 @@
  */
 package Controlador;
 
+import Vista.Compra;
 import Vista.GUIPrincipal;
+import Vista.Inventario;
+import Vista.RegistroProductos;
 import Vista.RegistroProveedores;
+import Vista.Reporte;
 import Vista.Venta;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,10 +30,28 @@ public class ControlGUIPrincipal implements ActionListener {
             RegistroProveedores regProveedores = new RegistroProveedores();
             regProveedores.setVisible(true);
         }
+        if (e.getActionCommand().equals(GUIPrincipal.MNI_REG_PRODUCTO)) {
+            RegistroProductos regProductos = new RegistroProductos();
+            regProductos.setVisible(true);
+        }
+        if (e.getActionCommand().equals(GUIPrincipal.MNI_REPORTE)) {
+            Reporte reporte = new Reporte();
+            reporte.setVisible(true);
+        }
+        if (e.getActionCommand().equals(GUIPrincipal.MNI_COMPRA)
+                || e.getActionCommand().equals(GUIPrincipal.BTN_COMPRA)) {
+            Compra compra = new Compra();
+            compra.setVisible(true);
+        }  
         if (e.getActionCommand().equals(GUIPrincipal.MNI_VENTA)
                 || e.getActionCommand().equals(GUIPrincipal.BTN_VENTA)) {
             Venta venta = new Venta();
             venta.setVisible(true);
+        }
+        if (e.getActionCommand().equals(GUIPrincipal.MNI_INVENTARIO)
+                || e.getActionCommand().equals(GUIPrincipal.BTN_INVENTARIO)) {
+            Inventario inventario = new Inventario();
+            inventario.setVisible(true);
         }
     }
 
