@@ -12,12 +12,12 @@ import java.awt.event.ActionListener;
  *
  * @author Raul
  */
-public class RegistroProductos extends javax.swing.JFrame {
+public class GUIRegistroProductos extends javax.swing.JFrame {
 
     /**
      * Creates new form RegistroProductos
      */
-    public RegistroProductos() {
+    public GUIRegistroProductos() {
         initComponents();
         ControlRegProductos control = new ControlRegProductos();
         this.escuchar(control);

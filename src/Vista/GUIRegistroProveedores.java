@@ -5,19 +5,28 @@
  */
 package Vista;
 
+import Controlador.ControlProveedores;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Raul
  */
-public class RegistroProveedores extends javax.swing.JFrame {
+public class GUIRegistroProveedores extends javax.swing.JFrame {
+
+    public static void mensaje(String mensaje) {
+        JOptionPane.showMessageDialog(null, mensaje);
+    }
 
     /**
      * Creates new form RegistroProveedores
      */
-    public RegistroProveedores() {
+    public GUIRegistroProveedores() throws SQLException, ClassNotFoundException {
         initComponents();
+        ControlProveedores control = new ControlProveedores(this);
+        this.escuchar(control);
     }
 
     /**
@@ -29,7 +38,6 @@ public class RegistroProveedores extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtID = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
         txtDireccion = new javax.swing.JTextField();
         txtCorreo = new javax.swing.JTextField();
@@ -43,6 +51,7 @@ public class RegistroProveedores extends javax.swing.JFrame {
         btnBuscar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
+        txtID = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -115,7 +124,7 @@ public class RegistroProveedores extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(btnBuscar))
                                 .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -128,9 +137,9 @@ public class RegistroProveedores extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
-                    .addComponent(btnBuscar))
+                    .addComponent(btnBuscar)
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -237,13 +246,21 @@ public class RegistroProveedores extends javax.swing.JFrame {
         this.txtDireccion.setText(txtDireccion);
     }
    
-   public String getTxtID(){
-    return this.txtID.getText().toString();
+   public int getTxtID(){
+    return Integer.parseInt(txtID.getText().trim());
    
 }
    public void setTxtID(String txtID) {
         this.txtID.setText(txtID);
     }
+   
+   public void limpiar(){
+       this.setTxtID("");
+       this.setTxtNombre("");
+       this.setTxtDireccion("");
+       this.setTxtCorreo("");
+       this.setTxtTelefono("");
+   }
         
 
 

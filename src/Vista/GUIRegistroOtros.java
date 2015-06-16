@@ -11,12 +11,12 @@ import java.awt.event.ActionListener;
  *
  * @author Raul
  */
-public class RegistroOtros extends javax.swing.JFrame {
+public class GUIRegistroOtros extends javax.swing.JFrame {
 
     /**
      * Creates new form RegistroMemorias
      */
-    public RegistroOtros() {
+    public GUIRegistroOtros() {
         initComponents();
     }
 

@@ -11,12 +11,12 @@ import java.awt.event.ActionListener;
  *
  * @author Raul
  */
-public class RegistroProcesadores extends javax.swing.JFrame {
+public class GUIRegistroProcesadores extends javax.swing.JFrame {
 
     /**
      * Creates new form RegistroProcesadores
      */
-    public RegistroProcesadores() {
+    public GUIRegistroProcesadores() {
         initComponents();
     }
 
@@ -117,13 +117,11 @@ public class RegistroProcesadores extends javax.swing.JFrame {
                                         .addComponent(jLabel3)))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(txtCantidad, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtPrecio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(144, 144, 144))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(txtCantidad, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtPrecio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(21, 21, 21))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(71, 71, 71)
                         .addComponent(jLabel4)

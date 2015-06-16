@@ -5,11 +5,11 @@
  */
 package Controlador;
 
-import Vista.RegistroMemorias;
-import Vista.RegistroOtros;
-import Vista.RegistroComputadores;
-import Vista.RegistroProcesadores;
-import Vista.RegistroProductos;
+import Vista.GUIRegistroMemorias;
+import Vista.GUIRegistroOtros;
+import Vista.GUIRegistroComputadores;
+import Vista.GUIRegistroProcesadores;
+import Vista.GUIRegistroProductos;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -21,20 +21,20 @@ public class ControlRegProductos implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals(RegistroProductos.BTN_PROCESADORES)) {
-            RegistroProcesadores procesadores=new RegistroProcesadores();
+        if (e.getActionCommand().equals(GUIRegistroProductos.BTN_PROCESADORES)) {
+            GUIRegistroProcesadores procesadores=new GUIRegistroProcesadores();
             procesadores.setVisible(true);
         }
-        if (e.getActionCommand().equals(RegistroProductos.BTN_MEMORIAS)) {
-            RegistroMemorias memorias=new RegistroMemorias();
+        if (e.getActionCommand().equals(GUIRegistroProductos.BTN_MEMORIAS)) {
+            GUIRegistroMemorias memorias=new GUIRegistroMemorias();
             memorias.setVisible(true);
         }
-        if (e.getActionCommand().equals(RegistroProductos.BTN_COMPUTADORES)) {
-            RegistroComputadores computadores=new RegistroComputadores();
+        if (e.getActionCommand().equals(GUIRegistroProductos.BTN_COMPUTADORES)) {
+            GUIRegistroComputadores computadores=new GUIRegistroComputadores();
             computadores.setVisible(true);
         }
-        if (e.getActionCommand().equals(RegistroProductos.BTN_OTROS)) {
-            RegistroOtros otros=new RegistroOtros();
+        if (e.getActionCommand().equals(GUIRegistroProductos.BTN_OTROS)) {
+            GUIRegistroOtros otros=new GUIRegistroOtros();
             otros.setVisible(true);
         }
     }

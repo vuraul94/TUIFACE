@@ -8,12 +8,15 @@ package Controlador;
 import Vista.Compra;
 import Vista.GUIPrincipal;
 import Vista.Inventario;
-import Vista.RegistroProductos;
-import Vista.RegistroProveedores;
+import Vista.GUIRegistroProductos;
+import Vista.GUIRegistroProveedores;
 import Vista.Reporte;
 import Vista.Venta;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -27,11 +30,17 @@ public class ControlGUIPrincipal implements ActionListener {
             System.exit(0);
         }
         if (e.getActionCommand().equals(GUIPrincipal.MNI_REG_PROVEEDORES)) {
-            RegistroProveedores regProveedores = new RegistroProveedores();
-            regProveedores.setVisible(true);
+            try {
+                GUIRegistroProveedores regProveedores = new GUIRegistroProveedores();
+                regProveedores.setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(ControlGUIPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ControlGUIPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         if (e.getActionCommand().equals(GUIPrincipal.MNI_REG_PRODUCTO)) {
-            RegistroProductos regProductos = new RegistroProductos();
+            GUIRegistroProductos regProductos = new GUIRegistroProductos();
             regProductos.setVisible(true);
         }
         if (e.getActionCommand().equals(GUIPrincipal.MNI_REPORTE)) {
