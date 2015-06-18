@@ -47,6 +47,9 @@ public class GUIRegistroProcesadores extends javax.swing.JFrame {
         txtNucleos = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtFrecuencia = new javax.swing.JTextField();
+        btnEliminar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -83,6 +86,17 @@ public class GUIRegistroProcesadores extends javax.swing.JFrame {
 
         jLabel8.setText("Frecuencia:");
 
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
+        btnModificar.setText("Modificar");
+
+        btnBuscar.setText("Buscar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -99,13 +113,20 @@ public class GUIRegistroProcesadores extends javax.swing.JFrame {
                                 .addComponent(jLabel2)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtIdProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtIdProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnBuscar)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(txtNombre)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(238, 238, 238)
+                                .addComponent(btnEliminar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnModificar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnRegistrar))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,10 +162,11 @@ public class GUIRegistroProcesadores extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtIdProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIdProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -169,12 +191,16 @@ public class GUIRegistroProcesadores extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnRegistrar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegistrar)
+                    .addComponent(btnModificar)
+                    .addComponent(btnEliminar))
+                .addContainerGap())
         );
 
         pack();
@@ -188,11 +214,18 @@ public class GUIRegistroProcesadores extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNucleosActionPerformed
 
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -213,66 +246,77 @@ public class GUIRegistroProcesadores extends javax.swing.JFrame {
     private javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables
 
- public static final String BTN_REGISTRAR= "Registrar";
-    
-   public void escuchar (ActionListener control){
-       this.btnRegistrar.addActionListener(control);  
-   }
-   
-   
-   public String getTxtCantidad(){
-    return this.txtCantidad.getText().toString(); 
-}
-   public void setTxtCantidad(String txtCantidad) {
+    public static final String BTN_REGISTRAR = "Registrar";
+    public static final String BTN_BUSCAR = "Buscar";
+    public static final String BTN_ELIMINAR = "Eliminar";
+    public static final String BTN_MODIFICAR = "Modificar";
+
+    public void escuchar(ActionListener control) {
+        this.btnBuscar.addActionListener(control);
+        this.btnEliminar.addActionListener(control);
+        this.btnModificar.addActionListener(control);
+        this.btnRegistrar.addActionListener(control);
+    }
+
+    public String getTxtCantidad() {
+        return this.txtCantidad.getText().toString();
+    }
+
+    public void setTxtCantidad(String txtCantidad) {
         this.txtCantidad.setText(txtCantidad);
     }
-   
-   public String getTxtDescripcion(){
-    return this.txtDescripción.getText().toString(); 
-}
-   public void setTxtDescripcion(String txtDescripcion) {
+
+    public String getTxtDescripcion() {
+        return this.txtDescripción.getText().toString();
+    }
+
+    public void setTxtDescripcion(String txtDescripcion) {
         this.txtDescripción.setText(txtDescripcion);
     }
-    public String getTxtIdProducto(){
-    return this.txtIdProducto.getText().toString(); 
-}
-   public void setTxtIdProducto(String txtIdProducto) {
+
+    public String getTxtIdProducto() {
+        return this.txtIdProducto.getText().toString();
+    }
+
+    public void setTxtIdProducto(String txtIdProducto) {
         this.txtIdProducto.setText(txtIdProducto);
     }
-    public String getTxtMarca(){
-    return this.txtMarca.getText().toString(); 
-}
-   public void setTxtMarca(String txtMarca) {
+
+    public String getTxtMarca() {
+        return this.txtMarca.getText().toString();
+    }
+
+    public void setTxtMarca(String txtMarca) {
         this.txtMarca.setText(txtMarca);
     }
-   
-    public String getTxtNombre(){
-    return this.txtNombre.getText().toString(); 
-}
-   public void setTxNombre(String txtNombre) {
+
+    public String getTxtNombre() {
+        return this.txtNombre.getText().toString();
+    }
+
+    public void setTxNombre(String txtNombre) {
         this.txtNombre.setText(txtNombre);
     }
-   
-    public String getTxtPrecio(){
-    return this.txtPrecio.getText().toString(); 
-}
+
+    public String getTxtPrecio() {
+        return this.txtPrecio.getText().toString();
+    }
 
     public void setTxtPrecio(String txtPrecio) {
         this.txtPrecio.setText(txtPrecio);
     }
-   
-    
-     public String getTxtFrecuencia(){
-    return this.txtFrecuencia.getText().toString(); 
-}
+
+    public String getTxtFrecuencia() {
+        return this.txtFrecuencia.getText().toString();
+    }
 
     public void setTxtFrecuencia(String txtFrecuencia) {
         this.txtFrecuencia.setText(txtFrecuencia);
     }
-    
-    public String getTxtNucleos(){
-    return this.txtNucleos.getText().toString(); 
-}
+
+    public String getTxtNucleos() {
+        return this.txtNucleos.getText().toString();
+    }
 
     public void setTxtNucleos(String txtNucleos) {
         this.txtNucleos.setText(txtNucleos);

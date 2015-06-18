@@ -51,6 +51,9 @@ public class GUIRegistroComputadores extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         txtProcesador = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
+        btnEliminar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -85,6 +88,12 @@ public class GUIRegistroComputadores extends javax.swing.JFrame {
 
         jLabel10.setText("Procesador:");
 
+        btnEliminar.setText("Eliminar");
+
+        btnModificar.setText("Modificar");
+
+        btnBuscar.setText("Buscar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -107,30 +116,38 @@ public class GUIRegistroComputadores extends javax.swing.JFrame {
                     .addComponent(txtNombre)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtIdProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtCantidad, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtPrecio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtIdProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnBuscar))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtRom, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtRam, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtProcesador, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTarjetaMadre, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtTarjetaMadre, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtCantidad, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtPrecio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtProcesador, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 40, Short.MAX_VALUE)))
                 .addGap(104, 104, 104))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnEliminar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnModificar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRegistrar)
                 .addGap(32, 32, 32))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtIdProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIdProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -155,7 +172,7 @@ public class GUIRegistroComputadores extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(txtProcesador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -167,8 +184,11 @@ public class GUIRegistroComputadores extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnRegistrar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegistrar)
+                    .addComponent(btnModificar)
+                    .addComponent(btnEliminar))
                 .addContainerGap())
         );
 
@@ -184,6 +204,9 @@ public class GUIRegistroComputadores extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -208,73 +231,95 @@ public class GUIRegistroComputadores extends javax.swing.JFrame {
     private javax.swing.JTextField txtTarjetaMadre;
     // End of variables declaration//GEN-END:variables
 
-    public static final String BTN_REGISTRAR= "Registrar";
-    
-   public void escuchar (ActionListener control){
-       this.btnRegistrar.addActionListener(control);  
-   }
-    
-    public String getTxtCantidad(){
-    return this.txtCantidad.getText().toString(); 
-}
-   public void setTxtCantidad(String txtCantidad) {
+    public static final String BTN_REGISTRAR = "Registrar";
+    public static final String BTN_BUSCAR = "Buscar";
+    public static final String BTN_ELIMINAR = "Eliminar";
+    public static final String BTN_MODIFICAR = "Modificar";
+
+    public void escuchar(ActionListener control) {
+        this.btnBuscar.addActionListener(control);
+        this.btnEliminar.addActionListener(control);
+        this.btnModificar.addActionListener(control);
+        this.btnRegistrar.addActionListener(control);
+    }
+
+    public String getTxtCantidad() {
+        return this.txtCantidad.getText().toString();
+    }
+
+    public void setTxtCantidad(String txtCantidad) {
         this.txtCantidad.setText(txtCantidad);
     }
 
- public String getTxtDescripcion(){
-    return this.txtDescripción.getText().toString(); 
-}
-   public void setTxtDescripcion(String txtDescripcion) {
+    public String getTxtDescripcion() {
+        return this.txtDescripción.getText().toString();
+    }
+
+    public void setTxtDescripcion(String txtDescripcion) {
         this.txtDescripción.setText(txtDescripcion);
     }
-    public String getTxtIdProducto(){
-    return this.txtIdProducto.getText().toString(); 
-}
-   public void setTxtIdProducto(String txtIdProducto) {
+
+    public String getTxtIdProducto() {
+        return this.txtIdProducto.getText().toString();
+    }
+
+    public void setTxtIdProducto(String txtIdProducto) {
         this.txtIdProducto.setText(txtIdProducto);
     }
-    public String getTxtMarca(){
-    return this.txtMarca.getText().toString(); 
-}
-   public void setTxtMarca(String txtMarca) {
+
+    public String getTxtMarca() {
+        return this.txtMarca.getText().toString();
+    }
+
+    public void setTxtMarca(String txtMarca) {
         this.txtMarca.setText(txtMarca);
     }
-   
-    public String getTxtNombre(){
-    return this.txtNombre.getText().toString(); 
-}
-   public void setTxNombre(String txtNombre) {
+
+    public String getTxtNombre() {
+        return this.txtNombre.getText().toString();
+    }
+
+    public void setTxNombre(String txtNombre) {
         this.txtNombre.setText(txtNombre);
     }
-    public String getTxtPrecio(){
-    return this.txtPrecio.getText().toString(); 
-}
-   public void setTxtPrecio(String txtPrecio) {
+
+    public String getTxtPrecio() {
+        return this.txtPrecio.getText().toString();
+    }
+
+    public void setTxtPrecio(String txtPrecio) {
         this.txtPrecio.setText(txtPrecio);
     }
-    public String getTxtProcesador(){
-    return this.txtProcesador.getText().toString(); 
-}
-   public void setTxtProcesador(String txtProcesador) {
+
+    public String getTxtProcesador() {
+        return this.txtProcesador.getText().toString();
+    }
+
+    public void setTxtProcesador(String txtProcesador) {
         this.txtProcesador.setText(txtProcesador);
     }
-   
-    public String getTxtRam(){
-    return this.txtRam.getText().toString(); 
-}
-   public void setTxtRam(String txtRam) {
+
+    public String getTxtRam() {
+        return this.txtRam.getText().toString();
+    }
+
+    public void setTxtRam(String txtRam) {
         this.txtRam.setText(txtRam);
     }
-    public String getTxtRom(){
-    return this.txtRom.getText().toString(); 
-}
-   public void setTxtRom(String txtRom) {
+
+    public String getTxtRom() {
+        return this.txtRom.getText().toString();
+    }
+
+    public void setTxtRom(String txtRom) {
         this.txtRom.setText(txtRom);
     }
-    public String getTxtTarjetaMadre(){
-    return this.txtTarjetaMadre.getText().toString(); 
-}
-   public void setTxtTarjetaMadre(String txtTarjetaMadre) {
+
+    public String getTxtTarjetaMadre() {
+        return this.txtTarjetaMadre.getText().toString();
+    }
+
+    public void setTxtTarjetaMadre(String txtTarjetaMadre) {
         this.txtTarjetaMadre.setText(txtTarjetaMadre);
     }
 
