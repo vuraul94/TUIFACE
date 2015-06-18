@@ -5,7 +5,10 @@
  */
 package Vista;
 
+import Controlador.ControlProducto;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,8 +19,10 @@ public class GUIRegistroOtros extends javax.swing.JFrame {
     /**
      * Creates new form RegistroMemorias
      */
-    public GUIRegistroOtros() {
+    public GUIRegistroOtros() throws SQLException, ClassNotFoundException {
         initComponents();
+        ControlProducto control= new ControlProducto(this);
+        this.escuchar(control);
     }
 
     /**
@@ -218,9 +223,18 @@ public class GUIRegistroOtros extends javax.swing.JFrame {
         this.btnModificar.addActionListener(control);
         this.btnRegistrar.addActionListener(control);
     }
+    
+      public String getTxtNombre() {
+        return this.txtNombre.getText().toString();
+    }
 
-    public String getTxtCantidad() {
-        return this.txtCantidad.getText().toString();
+    public void setTxtNombre(String txtCantidad) {
+        this.txtNombre.setText(txtCantidad);
+    }
+
+
+    public int getTxtCantidad() {
+        return Integer.parseInt(this.txtCantidad.getText());
     }
 
     public void setTxtCantidad(String txtCantidad) {
@@ -235,8 +249,8 @@ public class GUIRegistroOtros extends javax.swing.JFrame {
         this.txtDescripción.setText(txtDescripcion);
     }
 
-    public String getTxtIdProducto() {
-        return this.txtIdProducto.getText().toString();
+    public int getTxtIdProducto() {
+        return Integer.parseInt(this.txtIdProducto.getText());
     }
 
     public void setTxtIdProducto(String txtIdProducto) {
@@ -251,20 +265,29 @@ public class GUIRegistroOtros extends javax.swing.JFrame {
         this.txtMarca.setText(txtMarca);
     }
 
-    public String getTxtNombre() {
-        return this.txtNombre.getText().toString();
-    }
-
-    public void setTxNombre(String txtNombre) {
-        this.txtNombre.setText(txtNombre);
-    }
-
-    public String getTxtPrecio() {
-        return this.txtPrecio.getText().toString();
+    public int getTxtPrecio() {
+        return Integer.parseInt(this.txtPrecio.getText());
     }
 
     public void setTxtPrecio(String txtPrecio) {
         this.txtPrecio.setText(txtPrecio);
+    }
+    
+    public void setTxtID(String txtID) {
+        this.txtIdProducto.setText(txtID);
+    }
+   
+   public void limpiar(){
+       this.setTxtID("");
+       this.setTxtNombre("");
+       this.setTxtCantidad("");
+       this.setTxtMarca("");
+       this.setTxtPrecio("");
+       this.setTxtDescripcion("");
+   }
+   
+    public static void mensaje(String mensaje) {
+        JOptionPane.showMessageDialog(null, mensaje);
     }
 
 }

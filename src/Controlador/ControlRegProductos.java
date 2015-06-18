@@ -12,6 +12,9 @@ import Vista.GUIRegistroProcesadores;
 import Vista.GUIRegistroProductos;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -34,8 +37,14 @@ public class ControlRegProductos implements ActionListener{
             computadores.setVisible(true);
         }
         if (e.getActionCommand().equals(GUIRegistroProductos.BTN_OTROS)) {
-            GUIRegistroOtros otros=new GUIRegistroOtros();
-            otros.setVisible(true);
+            try {
+                GUIRegistroOtros otros=new GUIRegistroOtros();
+                otros.setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(ControlRegProductos.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ControlRegProductos.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
     

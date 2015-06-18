@@ -38,7 +38,7 @@ public class RegistroProveedores extends RegistroBD {
             this.proceso(sql);
             salida = "La información se agregó correctamente.";
              }else{
-                 salida="La proveedor ya se encuentra registrada.";
+                 salida="El proveedor ya se encuentra registrada.";
              }         
         } catch (SQLException ex) {
             salida = "Error al incluir la información.";
@@ -54,7 +54,7 @@ public class RegistroProveedores extends RegistroBD {
                     +"', direccion='"+proveedor.getDireccion()
                     +"',correo='"+proveedor.getCorreo()
                     +"',telefono='"+proveedor.getTelefono()
-                    +"' where id="+proveedor.getIdProveedor()+";";
+                    +"' where id_proveedor="+proveedor.getIdProveedor()+";";
             this.proceso(sql);
             salida = "La información se actualizó correctamente.";
              }else{
@@ -70,7 +70,7 @@ public class RegistroProveedores extends RegistroBD {
         salida="";
         try {
             if (verificarID(proveedor.getIdProveedor()) != null) {
-                sql = "delete from tb_proveedor where ID="+proveedor.getIdProveedor()+";";
+                sql = "delete from tb_proveedor where ID_Proveedor="+proveedor.getIdProveedor()+";";
                 this.proceso(sql);
                 salida = "Se borró la información correctamente.";
             }else{
@@ -101,10 +101,10 @@ public class RegistroProveedores extends RegistroBD {
 
     public Proveedores verificarID(int id) {
         try {
-            sql = "select * from tb_proveedor where id=" + id ;
+            sql = "select * from tb_proveedor where id_proveedor=" + id ;
             resultado = this.consulta(sql);
             while (resultado.next()) {
-                return new Proveedores(resultado.getInt("id"), resultado.getString("nombre"),resultado.getString("direccion"),resultado.getString("correo"),resultado.getString("telefono"));
+                return new Proveedores(resultado.getInt("id_proveedor"), resultado.getString("nombre"),resultado.getString("direccion"),resultado.getString("correo"),resultado.getString("telefono"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(RegistroProveedores.class.getName()).log(Level.SEVERE, null, ex);
@@ -115,7 +115,7 @@ public class RegistroProveedores extends RegistroBD {
     public String getListaProveedores(){
         salida="";
         for (Proveedores proveedor : this.consultarProveedores()) {
-            salida+="ID: "+proveedor.getIdProveedor()+"\tNombre: "+proveedor.getNombre()+"\n";
+            salida+="ID_Proveedor: "+proveedor.getIdProveedor()+"\tNombre: "+proveedor.getNombre()+"\n";
         }
         return salida;
     }

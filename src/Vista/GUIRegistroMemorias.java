@@ -289,5 +289,13 @@ public class GUIRegistroMemorias extends javax.swing.JFrame {
     public void setTxtPrecio(String txtPrecio) {
         this.txtPrecio.setText(txtPrecio);
     }
+    
+     public String getTxtCapacidad() {
+        return this.txtCapacidad.getText().toString();
+    }
+
+    public void setTxtCapacidad(String txtCapacidad) {
+        this.txtCapacidad.setText(txtCapacidad);
+    }
 
 }

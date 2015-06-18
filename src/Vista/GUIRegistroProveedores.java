@@ -16,9 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class GUIRegistroProveedores extends javax.swing.JFrame {
 
-    public static void mensaje(String mensaje) {
-        JOptionPane.showMessageDialog(null, mensaje);
-    }
+   
 
     /**
      * Creates new form RegistroProveedores
@@ -259,6 +257,10 @@ public class GUIRegistroProveedores extends javax.swing.JFrame {
        this.setTxtCorreo("");
        this.setTxtTelefono("");
    }
+   
+    public static void mensaje(String mensaje) {
+        JOptionPane.showMessageDialog(null, mensaje);
+    }
         
 
 

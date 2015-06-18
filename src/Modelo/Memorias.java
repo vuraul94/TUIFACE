@@ -11,18 +11,18 @@ package Modelo;
  */
 public class Memorias  extends Producto {
 
-    int capacidad;
+    String capacidad;
     
-    public Memorias(int idProducto,String nombre, String descripcion, String marca, int precio, int cantidad, int capacidad) {
+    public Memorias(int idProducto,String nombre, String descripcion, String marca, int precio, int cantidad, String capacidad) {
         super(idProducto,nombre, descripcion, marca, precio, cantidad);
         this.capacidad=capacidad;
     }
 
-    public int getCapacidad() {
+    public String getCapacidad() {
         return capacidad;
     }
 
-    public void setCapacidad(int capacidad) {
+    public void setCapacidad(String capacidad) {
         this.capacidad = capacidad;
     }
     
