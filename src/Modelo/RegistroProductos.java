@@ -189,9 +189,9 @@ public class RegistroProductos extends RegistroBD {
 
     public Procesadores verificarIDProcesador(int id) {
         try {
-            sql = "select * from tb_productos Pd,tb_procesadores Pr where Pd.ID_Producto=Pr.ID_Producto and Pd.id_producto=" + id;
+            sql = "select * from tb_productos Pd,tb_procesadores Pr where Pr.ID_Producto in (select ID_Producto from tb_procesadores)"
+                    + "and Pd.ID_Producto= Pr.ID_Producto and Pd.id_producto=" + id;
             resultado = this.consulta(sql);
-
             while (resultado.next()) {
                 return new Procesadores(resultado.getInt("id_producto"), resultado.getString("nombre"), resultado.getString("descripcion"), resultado.getString("marca"), resultado.getInt("precio"), resultado.getInt("cantidad"), resultado.getInt("nucleos"), resultado.getInt("frecuencia"));
             }
@@ -205,7 +205,7 @@ public class RegistroProductos extends RegistroBD {
     public String incluirMemorias(Memorias memoria) {
         salida = "";
         try {
-            if (verificarID(memoria.getIdProducto()) == null) {
+            if (verificarIDMemoria(memoria.getIdProducto()) == null) {
                 sql = "insert into tb_memorias values("
                         + memoria.getIdProducto()
                         + ",'" + memoria.getCapacidad()
@@ -224,9 +224,18 @@ public class RegistroProductos extends RegistroBD {
     public String modificarMemorias(Memorias memoria) {
         salida = "";
         try {
-            if (verificarID(memoria.getIdProducto()) != null) {
-                sql = "update tb_memorias set capacidad='" + memoria.getCapacidad() + ";";
+            if (verificarIDMemoria(memoria.getIdProducto()) != null) {
+                sql = "update tb_memorias set capacidad='" + memoria.getCapacidad() 
+                        +"' where id_producto=" + memoria.getIdProducto() + ";";
                 this.proceso(sql);
+                sql2 = "update tb_productos set nombre='" + memoria.getNombre()
+                        + "', marca='" + memoria.getMarca()
+                        + "', precio='" + memoria.getPrecio()
+                        + "',cantidad='" + memoria.getCantidad()
+                        + "',descripcion='" + memoria.getDescripcion()
+                        + "' where id_producto=" + memoria.getIdProducto() + ";";
+                this.proceso(sql2);
+                
                 salida = "La información se actualizó correctamente.";
             } else {
                 salida = "El id no existe en la base de datos.";
@@ -256,7 +265,8 @@ public class RegistroProductos extends RegistroBD {
 
     public Memorias verificarIDMemoria(int id) {
         try {
-            sql = "select * from tb_memorias where id_producto=" + id;
+            sql = "select * from tb_productos Pd,tb_memorias M where M.ID_Producto in (select ID_Producto from tb_memorias)"
+                    + "and Pd.ID_Producto= M.ID_Producto and M.id_producto=" + id;
             resultado = this.consulta(sql);
             while (resultado.next()) {
                 return new Memorias(resultado.getInt("id_producto"), resultado.getString("nombre"), resultado.getString("descripcion"), resultado.getString("marca"), resultado.getInt("precio"), resultado.getInt("cantidad"), resultado.getString("capacidad"));

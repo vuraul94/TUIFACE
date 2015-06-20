@@ -5,7 +5,10 @@
  */
 package Vista;
 
+import Controlador.ControlProducto;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,8 +19,10 @@ public class GUIRegistroMemorias extends javax.swing.JFrame {
     /**
      * Creates new form RegistroComputadores
      */
-    public GUIRegistroMemorias() {
+    public GUIRegistroMemorias() throws SQLException, ClassNotFoundException {
         initComponents();
+        ControlProducto control= new ControlProducto(this);
+        this.escuchar(control);
     }
 
     /**
@@ -52,6 +57,7 @@ public class GUIRegistroMemorias extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btnRegistrar.setText("Registrar");
+        btnRegistrar.setActionCommand("RegistrarM");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarActionPerformed(evt);
@@ -83,6 +89,7 @@ public class GUIRegistroMemorias extends javax.swing.JFrame {
         jLabel1.setText("ID Producto:");
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.setActionCommand("EliminarM");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
@@ -90,8 +97,10 @@ public class GUIRegistroMemorias extends javax.swing.JFrame {
         });
 
         btnModificar.setText("Modificar");
+        btnModificar.setActionCommand("ModificarM");
 
         btnBuscar.setText("Buscar");
+        btnBuscar.setActionCommand("BuscarM");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -230,10 +239,10 @@ public class GUIRegistroMemorias extends javax.swing.JFrame {
     private javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables
 
-    public static final String BTN_REGISTRAR = "Registrar";
-    public static final String BTN_BUSCAR = "Buscar";
-    public static final String BTN_ELIMINAR = "Eliminar";
-    public static final String BTN_MODIFICAR = "Modificar";
+    public static final String BTN_REGISTRAR = "RegistrarM";
+    public static final String BTN_BUSCAR = "BuscarM";
+    public static final String BTN_ELIMINAR = "EliminarM";
+    public static final String BTN_MODIFICAR = "ModificarM";
 
     public void escuchar(ActionListener control) {
         this.btnBuscar.addActionListener(control);
@@ -242,8 +251,8 @@ public class GUIRegistroMemorias extends javax.swing.JFrame {
         this.btnRegistrar.addActionListener(control);
     }
 
-    public String getTxtCantidad() {
-        return this.txtCantidad.getText().toString();
+    public int getTxtCantidad() {
+        return Integer.parseInt(this.txtCantidad.getText());
     }
 
     public void setTxtCantidad(String txtCantidad) {
@@ -258,8 +267,8 @@ public class GUIRegistroMemorias extends javax.swing.JFrame {
         this.txtDescripción.setText(txtDescripcion);
     }
 
-    public String getTxtIdProducto() {
-        return this.txtIdProducto.getText().toString();
+    public int getTxtIdProducto() {
+        return Integer.parseInt(this.txtIdProducto.getText());
     }
 
     public void setTxtIdProducto(String txtIdProducto) {
@@ -282,8 +291,8 @@ public class GUIRegistroMemorias extends javax.swing.JFrame {
         this.txtNombre.setText(txtNombre);
     }
 
-    public String getTxtPrecio() {
-        return this.txtPrecio.getText().toString();
+    public int getTxtPrecio() {
+        return Integer.parseInt(this.txtPrecio.getText());
     }
 
     public void setTxtPrecio(String txtPrecio) {
@@ -296,6 +305,20 @@ public class GUIRegistroMemorias extends javax.swing.JFrame {
 
     public void setTxtCapacidad(String txtCapacidad) {
         this.txtCapacidad.setText(txtCapacidad);
+    }
+    
+    public void limpiar(){
+       this.setTxtIdProducto("");
+       this.setTxtNombre("");
+       this.setTxtCantidad("");
+       this.setTxtMarca("");
+       this.setTxtPrecio("");
+       this.setTxtDescripcion("");
+       this.setTxtCapacidad("");
+   }
+   
+    public static void mensaje(String mensaje) {
+        JOptionPane.showMessageDialog(null, mensaje);
     }
 
 }

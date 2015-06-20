@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import Modelo.Memorias;
 import Modelo.Procesadores;
 import Modelo.Producto;
 import Modelo.RegistroProductos;
@@ -72,9 +73,10 @@ public class ControlProducto implements ActionListener {
             guiOtros.limpiar();
         }
 
+        
+        
         if (e.getActionCommand().equals(GUIRegistroProcesadores.BTN_BUSCAR)) {
             Procesadores procesador = regProducto.verificarIDProcesador(guiProcesadores.getTxtIdProducto());
-            System.out.println(procesador.getFrecuencia());
             guiProcesadores.setTxtNombre(procesador.getNombre());
             guiProcesadores.setTxtMarca(procesador.getMarca());
             guiProcesadores.setTxtDescripcion(procesador.getDescripcion());
@@ -87,7 +89,7 @@ public class ControlProducto implements ActionListener {
         if (e.getActionCommand().equals(GUIRegistroProcesadores.BTN_REGISTRAR)) {
             Procesadores procesador = new Procesadores(guiProcesadores.getTxtIdProducto(), guiProcesadores.getTxtNombre(), guiProcesadores.getTxtDescripcion(), guiProcesadores.getTxtMarca(), guiProcesadores.getTxtPrecio(), guiProcesadores.getTxtCantidad(), guiProcesadores.getTxtNucleos(), guiProcesadores.getTxtFrecuencia());
             if (regProducto.incluirProductos(procesador)) {
-                GUIRegistroOtros.mensaje(regProducto.incluirProcesador(procesador));
+                GUIRegistroProcesadores.mensaje(regProducto.incluirProcesador(procesador));
             }
             guiProcesadores.limpiar();
         }
@@ -100,9 +102,42 @@ public class ControlProducto implements ActionListener {
         
         if (e.getActionCommand().equals(GUIRegistroProcesadores.BTN_ELIMINAR)) {
             Procesadores procesador = new Procesadores(guiProcesadores.getTxtIdProducto(), guiProcesadores.getTxtNombre(), guiProcesadores.getTxtDescripcion(), guiProcesadores.getTxtMarca(), guiProcesadores.getTxtPrecio(), guiProcesadores.getTxtCantidad(),guiProcesadores.getTxtNucleos(),guiProcesadores.getTxtFrecuencia());
-            GUIRegistroOtros.mensaje(regProducto.eliminarProcesador(procesador));
+            GUIRegistroProcesadores.mensaje(regProducto.eliminarProcesador(procesador));
             regProducto.eliminarProductos(procesador);
             guiProcesadores.limpiar();
+        }
+        
+        
+        
+        if (e.getActionCommand().equals(GUIRegistroMemorias.BTN_BUSCAR)) {
+            Memorias memoria = regProducto.verificarIDMemoria(guiMemorias.getTxtIdProducto());
+            guiMemorias.setTxtNombre(memoria.getNombre());
+            guiMemorias.setTxtMarca(memoria.getMarca());
+            guiMemorias.setTxtDescripcion(memoria.getDescripcion());
+            guiMemorias.setTxtPrecio(String.valueOf(memoria.getPrecio()));
+            guiMemorias.setTxtCantidad(String.valueOf(memoria.getCantidad()));
+            guiMemorias.setTxtCapacidad(memoria.getCapacidad());;
+        }
+
+        if (e.getActionCommand().equals(GUIRegistroMemorias.BTN_REGISTRAR)) {
+            Memorias memoria = new Memorias(guiMemorias.getTxtIdProducto(), guiMemorias.getTxtNombre(), guiMemorias.getTxtDescripcion(), guiMemorias.getTxtMarca(), guiMemorias.getTxtPrecio(), guiMemorias.getTxtCantidad(), guiMemorias.getTxtCapacidad());
+            if (regProducto.incluirProductos(memoria)) {
+                GUIRegistroProcesadores.mensaje(regProducto.incluirMemorias(memoria));
+            }
+            guiMemorias.limpiar();
+        }
+        
+        if (e.getActionCommand().equals(GUIRegistroMemorias.BTN_MODIFICAR)) {
+            Memorias memoria = new Memorias(guiMemorias.getTxtIdProducto(), guiMemorias.getTxtNombre(), guiMemorias.getTxtDescripcion(), guiMemorias.getTxtMarca(), guiMemorias.getTxtPrecio(), guiMemorias.getTxtCantidad(),guiMemorias.getTxtCapacidad());
+            GUIRegistroMemorias.mensaje(regProducto.modificarMemorias(memoria));
+            guiMemorias.limpiar();
+        }
+        
+        if (e.getActionCommand().equals(GUIRegistroMemorias.BTN_ELIMINAR)) {
+            Memorias memoria = new Memorias(guiMemorias.getTxtIdProducto(), guiMemorias.getTxtNombre(), guiMemorias.getTxtDescripcion(), guiMemorias.getTxtMarca(), guiMemorias.getTxtPrecio(), guiMemorias.getTxtCantidad(),guiMemorias.getTxtCapacidad());
+            GUIRegistroMemorias.mensaje(regProducto.eliminarMemorias(memoria));
+            regProducto.eliminarProductos(memoria);
+            guiMemorias.limpiar();
         }
     }
 }

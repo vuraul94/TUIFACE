@@ -35,8 +35,14 @@ public class ControlRegProductos implements ActionListener{
             }
         }
         if (e.getActionCommand().equals(GUIRegistroProductos.BTN_MEMORIAS)) {
-            GUIRegistroMemorias memorias=new GUIRegistroMemorias();
-            memorias.setVisible(true);
+            try {
+                GUIRegistroMemorias memorias=new GUIRegistroMemorias();
+                memorias.setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(ControlRegProductos.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ControlRegProductos.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         if (e.getActionCommand().equals(GUIRegistroProductos.BTN_COMPUTADORES)) {
             GUIRegistroComputadores computadores=new GUIRegistroComputadores();
