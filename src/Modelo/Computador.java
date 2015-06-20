@@ -13,15 +13,13 @@ public class Computador extends Producto{
     
     Memorias rom;
     Memorias ram;
-    Producto tarjetaMadre;
     Procesadores procesador;
     
 
-    public Computador(int idProducto,String nombre, String descripcion, String marca, int precio, int cantidad, Memorias rom, Memorias ram, Producto tarjetaMadre,Procesadores procesador) {
+    public Computador(int idProducto,String nombre, String descripcion, String marca, int precio, int cantidad, Memorias rom, Memorias ram, Procesadores procesador) {
         super(idProducto,nombre, descripcion, marca, precio, cantidad);
         this.rom=rom;
         this.ram=ram;
-        this.tarjetaMadre=tarjetaMadre;
         this.procesador=procesador;
     }
 
@@ -39,14 +37,6 @@ public class Computador extends Producto{
 
     public void setRam(Memorias ram) {
         this.ram = ram;
-    }
-
-    public Producto getTarjetaMadre() {
-        return tarjetaMadre;
-    }
-
-    public void setTarjetaMadre(Producto tarjetaMadre) {
-        this.tarjetaMadre = tarjetaMadre;
     }
 
     public Procesadores getProcesador() {
