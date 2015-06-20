@@ -25,8 +25,14 @@ public class ControlRegProductos implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals(GUIRegistroProductos.BTN_PROCESADORES)) {
-            GUIRegistroProcesadores procesadores=new GUIRegistroProcesadores();
-            procesadores.setVisible(true);
+            try {
+                GUIRegistroProcesadores procesadores=new GUIRegistroProcesadores();
+                procesadores.setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(ControlRegProductos.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ControlRegProductos.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         if (e.getActionCommand().equals(GUIRegistroProductos.BTN_MEMORIAS)) {
             GUIRegistroMemorias memorias=new GUIRegistroMemorias();

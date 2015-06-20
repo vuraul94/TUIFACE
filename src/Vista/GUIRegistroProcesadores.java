@@ -5,7 +5,10 @@
  */
 package Vista;
 
+import Controlador.ControlProducto;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,8 +19,10 @@ public class GUIRegistroProcesadores extends javax.swing.JFrame {
     /**
      * Creates new form RegistroProcesadores
      */
-    public GUIRegistroProcesadores() {
+    public GUIRegistroProcesadores() throws SQLException, ClassNotFoundException {
         initComponents();
+        ControlProducto control=new ControlProducto(this);
+        this.escuchar(control);
     }
 
     /**
@@ -70,6 +75,7 @@ public class GUIRegistroProcesadores extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txtDescripción);
 
         btnRegistrar.setText("Registrar");
+        btnRegistrar.setActionCommand("RegistrarP");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarActionPerformed(evt);
@@ -87,6 +93,7 @@ public class GUIRegistroProcesadores extends javax.swing.JFrame {
         jLabel8.setText("Frecuencia:");
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.setActionCommand("EliminarP");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
@@ -94,8 +101,10 @@ public class GUIRegistroProcesadores extends javax.swing.JFrame {
         });
 
         btnModificar.setText("Modificar");
+        btnModificar.setActionCommand("ModificarP");
 
         btnBuscar.setText("Buscar");
+        btnBuscar.setActionCommand("BuscarP");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -246,10 +255,10 @@ public class GUIRegistroProcesadores extends javax.swing.JFrame {
     private javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables
 
-    public static final String BTN_REGISTRAR = "Registrar";
-    public static final String BTN_BUSCAR = "Buscar";
-    public static final String BTN_ELIMINAR = "Eliminar";
-    public static final String BTN_MODIFICAR = "Modificar";
+    public static final String BTN_REGISTRAR = "RegistrarP";
+    public static final String BTN_BUSCAR = "BuscarP";
+    public static final String BTN_ELIMINAR = "EliminarP";
+    public static final String BTN_MODIFICAR = "ModificarP";
 
     public void escuchar(ActionListener control) {
         this.btnBuscar.addActionListener(control);
@@ -258,8 +267,8 @@ public class GUIRegistroProcesadores extends javax.swing.JFrame {
         this.btnRegistrar.addActionListener(control);
     }
 
-    public String getTxtCantidad() {
-        return this.txtCantidad.getText().toString();
+    public int getTxtCantidad() {
+        return Integer.parseInt(this.txtCantidad.getText());
     }
 
     public void setTxtCantidad(String txtCantidad) {
@@ -274,8 +283,8 @@ public class GUIRegistroProcesadores extends javax.swing.JFrame {
         this.txtDescripción.setText(txtDescripcion);
     }
 
-    public String getTxtIdProducto() {
-        return this.txtIdProducto.getText().toString();
+    public int getTxtIdProducto() {
+        return Integer.parseInt(this.txtIdProducto.getText());
     }
 
     public void setTxtIdProducto(String txtIdProducto) {
@@ -294,31 +303,46 @@ public class GUIRegistroProcesadores extends javax.swing.JFrame {
         return this.txtNombre.getText().toString();
     }
 
-    public void setTxNombre(String txtNombre) {
+    public void setTxtNombre(String txtNombre) {
         this.txtNombre.setText(txtNombre);
     }
 
-    public String getTxtPrecio() {
-        return this.txtPrecio.getText().toString();
+    public int getTxtPrecio() {
+        return Integer.parseInt(this.txtPrecio.getText());
     }
 
     public void setTxtPrecio(String txtPrecio) {
         this.txtPrecio.setText(txtPrecio);
     }
 
-    public String getTxtFrecuencia() {
-        return this.txtFrecuencia.getText().toString();
+    public int getTxtFrecuencia() {
+        return Integer.parseInt(this.txtFrecuencia.getText());
     }
 
     public void setTxtFrecuencia(String txtFrecuencia) {
         this.txtFrecuencia.setText(txtFrecuencia);
     }
 
-    public String getTxtNucleos() {
-        return this.txtNucleos.getText().toString();
+    public int getTxtNucleos() {
+        return Integer.parseInt(this.txtNucleos.getText());
     }
 
     public void setTxtNucleos(String txtNucleos) {
         this.txtNucleos.setText(txtNucleos);
+    }
+    
+    public void limpiar(){
+       this.setTxtIdProducto("");
+       this.setTxtNombre("");
+       this.setTxtCantidad("");
+       this.setTxtMarca("");
+       this.setTxtPrecio("");
+       this.setTxtDescripcion("");
+       this.setTxtFrecuencia("");
+       this.setTxtNucleos("");
+   }
+   
+    public static void mensaje(String mensaje) {
+        JOptionPane.showMessageDialog(null, mensaje);
     }
 }

@@ -217,6 +217,7 @@
     <Component class="javax.swing.JButton" name="btnRegistrar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Registrar"/>
+        <Property name="actionCommand" type="java.lang.String" value="RegistrarP"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegistrarActionPerformed"/>
@@ -242,6 +243,7 @@
     <Component class="javax.swing.JButton" name="btnEliminar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Eliminar"/>
+        <Property name="actionCommand" type="java.lang.String" value="EliminarP"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarActionPerformed"/>
@@ -250,11 +252,13 @@
     <Component class="javax.swing.JButton" name="btnModificar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Modificar"/>
+        <Property name="actionCommand" type="java.lang.String" value="ModificarP"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnBuscar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Buscar"/>
+        <Property name="actionCommand" type="java.lang.String" value="BuscarP"/>
       </Properties>
     </Component>
   </SubComponents>
