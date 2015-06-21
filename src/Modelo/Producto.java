@@ -10,16 +10,17 @@ package Modelo;
  * @author Raul
  */
 public class Producto {
-    
-    int idProducto;
-    String nombre;
-    String descripcion;
-    String marca;
-    int precio;
-    int cantidad;
 
-    public Producto(int idProducto,String nombre, String descripcion, String marca, int precio, int cantidad) {
-        this.idProducto=idProducto;
+    private int idProducto;
+    private String nombre;
+    private String descripcion;
+    private String marca;
+    private int precio;
+    private int cantidad;
+    private static String[] etiquetas = {"Carnet", "Nombre", "Marca", "Precio", "Cantidad"};
+
+    public Producto(int idProducto, String nombre, String descripcion, String marca, int precio, int cantidad) {
+        this.idProducto = idProducto;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.marca = marca;
@@ -74,7 +75,30 @@ public class Producto {
     public void setMarca(String marca) {
         this.marca = marca;
     }
-    
-    
-    
+
+    public static String[] getEtiquetas() {
+        return etiquetas;
+    }
+
+    public String getAtributo(int numeroAtributo) {
+        switch (numeroAtributo) {
+            case 0:
+                return String.valueOf(idProducto);
+            case 1:
+                return nombre;
+            case 2:
+                return marca;
+            case 3:
+                return String.valueOf(precio);
+            case 4:
+                return String.valueOf(cantidad);
+            default:
+                return null;
+        }
+    }
+
+    public static int getNumeroAtributos() {
+        return etiquetas.length;
+    }
+
 }

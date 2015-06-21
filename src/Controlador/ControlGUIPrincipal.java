@@ -59,8 +59,14 @@ public class ControlGUIPrincipal implements ActionListener {
         }
         if (e.getActionCommand().equals(GUIPrincipal.MNI_INVENTARIO)
                 || e.getActionCommand().equals(GUIPrincipal.BTN_INVENTARIO)) {
-            Inventario inventario = new Inventario();
-            inventario.setVisible(true);
+            try {
+                Inventario inventario = new Inventario();
+                inventario.setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(ControlGUIPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ControlGUIPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 

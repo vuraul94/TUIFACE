@@ -86,22 +86,6 @@ public class RegistroProductos extends RegistroBD {
         return salida;
     }
 
-    public ArrayList<Producto> consultarProductos() {
-        ArrayList<Producto> listaProductos = new ArrayList<Producto>();
-        try {
-
-            sql = "select * from tb_productos";
-            resultado = this.consulta(sql);
-            while (resultado.next()) {
-                listaProductos.add(new Producto(resultado.getInt("id_producto"), resultado.getString("nombre"), resultado.getString("descripcion"), resultado.getString("marca"), resultado.getInt("precio"), resultado.getInt("cantidad")));
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(RegistroProveedores.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return listaProductos;
-    }
-
     public Producto verificarID(int id) {
         try {
             sql = "select * from tb_productos where id_producto not in (select id_producto from tb_procesadores) and id_producto=" + id;
@@ -113,14 +97,6 @@ public class RegistroProductos extends RegistroBD {
             Logger.getLogger(RegistroProveedores.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
-    }
-
-    public String getListaProductos() {
-        salida = "";
-        for (Producto producto : this.consultarProductos()) {
-            salida += "ID_Producto: " + producto.getIdProducto() + "\tNombre: " + producto.getNombre() + "\n";
-        }
-        return salida;
     }
 
     //***************************************************Procesadores
@@ -278,7 +254,6 @@ public class RegistroProductos extends RegistroBD {
     }
 
     //***************************************************Computadores
-
     public String incluirComputadores(Computador memoria) {
         salida = "";
         try {
@@ -356,5 +331,78 @@ public class RegistroProductos extends RegistroBD {
             Logger.getLogger(RegistroProveedores.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    //*******************************************
+    public ArrayList<Producto> consultarProductos() {
+        ArrayList<Producto> listaProductos = new ArrayList<Producto>();
+        try {
+
+            sql = "select * from tb_productos";
+            resultado = this.consulta(sql);
+            while (resultado.next()) {
+                listaProductos.add(new Producto(resultado.getInt("id_producto"), resultado.getString("nombre"), resultado.getString("descripcion"), resultado.getString("marca"), resultado.getInt("precio"), resultado.getInt("cantidad")));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistroProveedores.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listaProductos;
+    }
+
+    public String getListaProductos() {
+        salida = "";
+        for (Producto producto : this.consultarProductos()) {
+            salida += "ID_Producto: " + producto.getIdProducto() + "\tNombre: " + producto.getNombre() + "\n";
+        }
+        return salida;
+    }
+
+    public String[][] getMatrizProductos() {
+        ArrayList<Producto> listaProductos = consultarProductos();
+        String[][] matriz = new String[listaProductos.size()][Producto.getNumeroAtributos()];
+        for (int fila = 0; fila < matriz.length; fila++) {
+            for (int columna = 0; columna < matriz[fila].length; columna++) {
+                matriz[fila][columna] = listaProductos.get(fila).getAtributo(columna);
+            }
+        }
+        return matriz;
+    }
+
+    public String[][] getMatrizBuscar(String datos, int tipoBusqueda) {
+
+        ArrayList<Producto> listaProductos = consultarProductos();
+        ArrayList<Producto> listaBusqueda = new ArrayList<Producto>();
+        
+        for (int i = 0; i < listaProductos.size(); i++) {
+            if (tipoBusqueda == 1) {
+                if (String.valueOf(listaProductos.get(i).getIdProducto()).equalsIgnoreCase(datos)) {
+                    listaBusqueda.add(listaProductos.get(i));
+                }
+            } else if (tipoBusqueda == 2) {
+                if (listaProductos.get(i).getNombre().equalsIgnoreCase(datos)) {
+                    listaBusqueda.add(listaProductos.get(i));
+                }
+            } else if (tipoBusqueda == 3) {
+                if (listaProductos.get(i).getMarca().equalsIgnoreCase(datos)) {
+                    listaBusqueda.add(listaProductos.get(i));
+                }
+            } else if (tipoBusqueda == 4) {
+                if (String.valueOf(listaProductos.get(i).getPrecio()).equalsIgnoreCase(datos)) {
+                    listaBusqueda.add(listaProductos.get(i));
+                }
+            } else if (tipoBusqueda == 5) {
+                if (String.valueOf(listaProductos.get(i).getCantidad()).equalsIgnoreCase(datos)) {
+                    listaBusqueda.add(listaProductos.get(i));
+                }
+            }
+        }
+        String[][] matriz = new String[listaBusqueda.size()][Producto.getNumeroAtributos()];
+            for (int fila = 0; fila < matriz.length; fila++) {
+                for (int columna = 0; columna < matriz[fila].length; columna++) {
+                    matriz[fila][columna] = listaBusqueda.get(fila).getAtributo(columna);
+                }
+            }
+        return matriz;
     }
 }
