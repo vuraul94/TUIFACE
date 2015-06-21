@@ -149,8 +149,8 @@ public class RegistroProductos extends RegistroBD {
         try {
             if (verificarIDProcesador(procesador.getIdProducto()) != null) {
                 sql = "update tb_procesadores set nucleos='" + procesador.getNucleos()
-                        + "', frecuencia='" + procesador.getFrecuencia() 
-                        +"' where id_producto=" + procesador.getIdProducto() + ";";
+                        + "', frecuencia='" + procesador.getFrecuencia()
+                        + "' where id_producto=" + procesador.getIdProducto() + ";";
                 this.proceso(sql);
                 sql2 = "update tb_productos set nombre='" + procesador.getNombre()
                         + "', marca='" + procesador.getMarca()
@@ -159,7 +159,7 @@ public class RegistroProductos extends RegistroBD {
                         + "',descripcion='" + procesador.getDescripcion()
                         + "' where id_producto=" + procesador.getIdProducto() + ";";
                 this.proceso(sql2);
-                
+
                 salida = "La información se actualizó correctamente.";
             } else {
                 salida = "El id no existe en la base de datos.";
@@ -225,8 +225,8 @@ public class RegistroProductos extends RegistroBD {
         salida = "";
         try {
             if (verificarIDMemoria(memoria.getIdProducto()) != null) {
-                sql = "update tb_memorias set capacidad='" + memoria.getCapacidad() 
-                        +"' where id_producto=" + memoria.getIdProducto() + ";";
+                sql = "update tb_memorias set capacidad='" + memoria.getCapacidad()
+                        + "' where id_producto=" + memoria.getIdProducto() + ";";
                 this.proceso(sql);
                 sql2 = "update tb_productos set nombre='" + memoria.getNombre()
                         + "', marca='" + memoria.getMarca()
@@ -235,7 +235,7 @@ public class RegistroProductos extends RegistroBD {
                         + "',descripcion='" + memoria.getDescripcion()
                         + "' where id_producto=" + memoria.getIdProducto() + ";";
                 this.proceso(sql2);
-                
+
                 salida = "La información se actualizó correctamente.";
             } else {
                 salida = "El id no existe en la base de datos.";
@@ -270,6 +270,87 @@ public class RegistroProductos extends RegistroBD {
             resultado = this.consulta(sql);
             while (resultado.next()) {
                 return new Memorias(resultado.getInt("id_producto"), resultado.getString("nombre"), resultado.getString("descripcion"), resultado.getString("marca"), resultado.getInt("precio"), resultado.getInt("cantidad"), resultado.getString("capacidad"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistroProveedores.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    //***************************************************Computadores
+
+    public String incluirComputadores(Computador memoria) {
+        salida = "";
+        try {
+            if (verificarIDComputador(memoria.getIdProducto()) == null) {
+                sql = "insert into tb_computadores values("
+                        + memoria.getIdProducto()
+                        + "," + memoria.getRom()
+                        + "," + memoria.getRam()
+                        + ",'" + memoria.getProcesador()
+                        + "');";
+                this.proceso(sql);
+                salida = "La información se agregó correctamente.";
+            } else {
+                salida = "El producto ya se encuentra registrado.";
+            }
+        } catch (SQLException ex) {
+            salida = "Error al incluir la información.";
+        }
+        return salida;
+    }
+
+    public String modificarComputadores(Computador computador) {
+        salida = "";
+        try {
+            if (verificarIDComputador(computador.getIdProducto()) != null) {
+                sql = "update tb_computadores set rom='" + computador.getRom()
+                        + "', ram='" + computador.getRam()
+                        + "', procesador='" + computador.getProcesador()
+                        + "' where id_producto=" + computador.getIdProducto() + ";";
+                this.proceso(sql);
+                sql2 = "update tb_productos set nombre='" + computador.getNombre()
+                        + "', marca='" + computador.getMarca()
+                        + "', precio='" + computador.getPrecio()
+                        + "',cantidad='" + computador.getCantidad()
+                        + "',descripcion='" + computador.getDescripcion()
+                        + "' where id_producto=" + computador.getIdProducto() + ";";
+                this.proceso(sql2);
+
+                salida = "La información se actualizó correctamente.";
+            } else {
+                salida = "El id no existe en la base de datos.";
+            }
+        } catch (SQLException ex) {
+            salida = "Error al modificar la información.";
+        }
+        return salida;
+    }
+
+    public String eliminarComputadores(Computador computador) {
+        salida = "";
+        try {
+            if (verificarIDComputador(computador.getIdProducto()) != null) {
+                sql = "delete from tb_computadores where ID_Producto=" + computador.getIdProducto() + ";";
+                this.proceso(sql);
+                salida = "Se borró la información correctamente.";
+            } else {
+                salida = "El id no existe en la base de datos.";
+            }
+
+        } catch (SQLException ex) {
+            salida = "Error al eliminar la información.";
+        }
+        return salida;
+    }
+
+    public Computador verificarIDComputador(int id) {
+        try {
+            sql = "select * from tb_productos Pd, tb_computadores C where C.ID_Producto in (select ID_Producto from tb_computadores)"
+                    + "and Pd.ID_Producto= C.ID_Producto and C.id_producto=" + id;
+            resultado = this.consulta(sql);
+            while (resultado.next()) {
+                return new Computador(resultado.getInt("id_producto"), resultado.getString("nombre"), resultado.getString("descripcion"), resultado.getString("marca"), resultado.getInt("precio"), resultado.getInt("cantidad"), resultado.getInt("rom"), resultado.getInt("ram"), resultado.getString("procesador"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(RegistroProveedores.class.getName()).log(Level.SEVERE, null, ex);

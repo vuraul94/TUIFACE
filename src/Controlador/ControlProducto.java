@@ -5,10 +5,12 @@
  */
 package Controlador;
 
+import Modelo.Computador;
 import Modelo.Memorias;
 import Modelo.Procesadores;
 import Modelo.Producto;
 import Modelo.RegistroProductos;
+import Vista.GUIRegistroComputadores;
 import Vista.GUIRegistroMemorias;
 import Vista.GUIRegistroOtros;
 import Vista.GUIRegistroProcesadores;
@@ -26,6 +28,7 @@ public class ControlProducto implements ActionListener {
     private GUIRegistroOtros guiOtros;
     private GUIRegistroProcesadores guiProcesadores;
     private GUIRegistroMemorias guiMemorias;
+    private GUIRegistroComputadores guiComputadores;
     private RegistroProductos regProducto;
 
     public ControlProducto(GUIRegistroOtros guiOtros) throws SQLException, ClassNotFoundException {
@@ -42,6 +45,13 @@ public class ControlProducto implements ActionListener {
         this.guiMemorias = guiMemorias;
         this.regProducto = new RegistroProductos();
     }
+
+    public ControlProducto(GUIRegistroComputadores guiComputadores) throws SQLException, ClassNotFoundException {
+        this.guiComputadores = guiComputadores;
+        this.regProducto = new RegistroProductos();
+    }
+    
+    
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -122,7 +132,7 @@ public class ControlProducto implements ActionListener {
         if (e.getActionCommand().equals(GUIRegistroMemorias.BTN_REGISTRAR)) {
             Memorias memoria = new Memorias(guiMemorias.getTxtIdProducto(), guiMemorias.getTxtNombre(), guiMemorias.getTxtDescripcion(), guiMemorias.getTxtMarca(), guiMemorias.getTxtPrecio(), guiMemorias.getTxtCantidad(), guiMemorias.getTxtCapacidad());
             if (regProducto.incluirProductos(memoria)) {
-                GUIRegistroProcesadores.mensaje(regProducto.incluirMemorias(memoria));
+                GUIRegistroMemorias.mensaje(regProducto.incluirMemorias(memoria));
             }
             guiMemorias.limpiar();
         }
@@ -138,6 +148,42 @@ public class ControlProducto implements ActionListener {
             GUIRegistroMemorias.mensaje(regProducto.eliminarMemorias(memoria));
             regProducto.eliminarProductos(memoria);
             guiMemorias.limpiar();
+        }
+        
+        
+        
+        
+        if (e.getActionCommand().equals(GUIRegistroComputadores.BTN_BUSCAR)) {
+            Computador computador = regProducto.verificarIDComputador(guiComputadores.getTxtIdProducto());
+            guiComputadores.setTxtNombre(computador.getNombre());
+            guiComputadores.setTxtMarca(computador.getMarca());
+            guiComputadores.setTxtDescripcion(computador.getDescripcion());
+            guiComputadores.setTxtPrecio(String.valueOf(computador.getPrecio()));
+            guiComputadores.setTxtCantidad(String.valueOf(computador.getCantidad()));
+            guiComputadores.setTxtRam(String.valueOf(computador.getRam()));
+            guiComputadores.setTxtRom(String.valueOf(computador.getRom()));
+            guiComputadores.setTxtProcesador(computador.getProcesador());
+        }
+
+        if (e.getActionCommand().equals(GUIRegistroComputadores.BTN_REGISTRAR)) {
+            Computador computador = new Computador(guiComputadores.getTxtIdProducto(), guiComputadores.getTxtNombre(), guiComputadores.getTxtDescripcion(), guiComputadores.getTxtMarca(), guiComputadores.getTxtPrecio(), guiComputadores.getTxtCantidad(), guiComputadores.getTxtRom(), guiComputadores.getTxtRam(), guiComputadores.getTxtProcesador());
+            if (regProducto.incluirProductos(computador)) {
+                GUIRegistroComputadores.mensaje(regProducto.incluirComputadores(computador));
+            }
+            guiComputadores.limpiar();
+        }
+        
+        if (e.getActionCommand().equals(GUIRegistroComputadores.BTN_MODIFICAR)) {
+            Computador computador = new Computador(guiComputadores.getTxtIdProducto(), guiComputadores.getTxtNombre(), guiComputadores.getTxtDescripcion(), guiComputadores.getTxtMarca(), guiComputadores.getTxtPrecio(), guiComputadores.getTxtCantidad(), guiComputadores.getTxtRom(), guiComputadores.getTxtRam(), guiComputadores.getTxtProcesador());
+            GUIRegistroComputadores.mensaje(regProducto.modificarComputadores(computador));
+            guiComputadores.limpiar();
+        }
+        
+        if (e.getActionCommand().equals(GUIRegistroComputadores.BTN_ELIMINAR)) {
+            Computador computador = new Computador(guiComputadores.getTxtIdProducto(), guiComputadores.getTxtNombre(), guiComputadores.getTxtDescripcion(), guiComputadores.getTxtMarca(), guiComputadores.getTxtPrecio(), guiComputadores.getTxtCantidad(), guiComputadores.getTxtRom(), guiComputadores.getTxtRam(), guiComputadores.getTxtProcesador());
+            GUIRegistroComputadores.mensaje(regProducto.eliminarComputadores(computador));
+            regProducto.eliminarProductos(computador);
+            guiComputadores.limpiar();
         }
     }
 }

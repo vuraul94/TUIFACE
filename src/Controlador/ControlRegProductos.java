@@ -45,8 +45,14 @@ public class ControlRegProductos implements ActionListener{
             }
         }
         if (e.getActionCommand().equals(GUIRegistroProductos.BTN_COMPUTADORES)) {
-            GUIRegistroComputadores computadores=new GUIRegistroComputadores();
-            computadores.setVisible(true);
+            try {
+                GUIRegistroComputadores computadores=new GUIRegistroComputadores();
+                computadores.setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(ControlRegProductos.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ControlRegProductos.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         if (e.getActionCommand().equals(GUIRegistroProductos.BTN_OTROS)) {
             try {

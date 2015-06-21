@@ -5,7 +5,10 @@
  */
 package Vista;
 
+import Controlador.ControlProducto;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,8 +19,10 @@ public class GUIRegistroComputadores extends javax.swing.JFrame {
     /**
      * Creates new form RegistroOtros
      */
-    public GUIRegistroComputadores() {
+    public GUIRegistroComputadores() throws SQLException, ClassNotFoundException {
         initComponents();
+        ControlProducto control=new ControlProducto(this);
+        this.escuchar(control);
     }
 
     /**
@@ -72,6 +77,7 @@ public class GUIRegistroComputadores extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txtDescripción);
 
         btnRegistrar.setText("Registrar");
+        btnRegistrar.setActionCommand("RegistrarC");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarActionPerformed(evt);
@@ -85,10 +91,13 @@ public class GUIRegistroComputadores extends javax.swing.JFrame {
         jLabel10.setText("Procesador:");
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.setActionCommand("EliminarC");
 
         btnModificar.setText("Modificar");
+        btnModificar.setActionCommand("ModificarC");
 
         btnBuscar.setText("Buscar");
+        btnBuscar.setActionCommand("BuscarC");
 
         txtProcesador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -244,10 +253,10 @@ public class GUIRegistroComputadores extends javax.swing.JFrame {
     private javax.swing.JTextField txtRom;
     // End of variables declaration//GEN-END:variables
 
-    public static final String BTN_REGISTRAR = "Registrar";
-    public static final String BTN_BUSCAR = "Buscar";
-    public static final String BTN_ELIMINAR = "Eliminar";
-    public static final String BTN_MODIFICAR = "Modificar";
+    public static final String BTN_REGISTRAR = "RegistrarC";
+    public static final String BTN_BUSCAR = "BuscarC";
+    public static final String BTN_ELIMINAR = "EliminarC";
+    public static final String BTN_MODIFICAR = "ModificarC";
 
     public void escuchar(ActionListener control) {
         this.btnBuscar.addActionListener(control);
@@ -256,8 +265,8 @@ public class GUIRegistroComputadores extends javax.swing.JFrame {
         this.btnRegistrar.addActionListener(control);
     }
 
-    public String getTxtCantidad() {
-        return this.txtCantidad.getText().toString();
+    public int getTxtCantidad() {
+        return Integer.parseInt(this.txtCantidad.getText());
     }
 
     public void setTxtCantidad(String txtCantidad) {
@@ -272,8 +281,8 @@ public class GUIRegistroComputadores extends javax.swing.JFrame {
         this.txtDescripción.setText(txtDescripcion);
     }
 
-    public String getTxtIdProducto() {
-        return this.txtIdProducto.getText().toString();
+    public int getTxtIdProducto() {
+        return Integer.parseInt(this.txtIdProducto.getText());
     }
 
     public void setTxtIdProducto(String txtIdProducto) {
@@ -292,12 +301,12 @@ public class GUIRegistroComputadores extends javax.swing.JFrame {
         return this.txtNombre.getText().toString();
     }
 
-    public void setTxNombre(String txtNombre) {
+    public void setTxtNombre(String txtNombre) {
         this.txtNombre.setText(txtNombre);
     }
 
-    public String getTxtPrecio() {
-        return this.txtPrecio.getText().toString();
+    public int getTxtPrecio() {
+        return Integer.parseInt(this.txtPrecio.getText());
     }
 
     public void setTxtPrecio(String txtPrecio) {
@@ -308,7 +317,7 @@ public class GUIRegistroComputadores extends javax.swing.JFrame {
         return Integer.parseInt(this.txtRom.getText());
     }
 
-    public void setTxRom(String txtRom) {
+    public void setTxtRom(String txtRom) {
         this.txtRom.setText(txtRom);
     }
     
@@ -316,7 +325,7 @@ public class GUIRegistroComputadores extends javax.swing.JFrame {
         return Integer.parseInt(this.txtRam.getText());
     }
 
-    public void setTxRam(String txtRom) {
+    public void setTxtRam(String txtRom) {
         this.txtRam.setText(txtRom);
     }
     
@@ -326,5 +335,21 @@ public class GUIRegistroComputadores extends javax.swing.JFrame {
 
     public void setTxtProcesador(String txtProcesador) {
         this.txtProcesador.setText(txtProcesador);
+    }
+    
+    public void limpiar(){
+       this.setTxtIdProducto("");
+       this.setTxtNombre("");
+       this.setTxtCantidad("");
+       this.setTxtMarca("");
+       this.setTxtPrecio("");
+       this.setTxtDescripcion("");
+       this.setTxtRom("");
+       this.setTxtRam("");
+       this.setTxtProcesador("");
+   }
+   
+    public static void mensaje(String mensaje) {
+        JOptionPane.showMessageDialog(null, mensaje);
     }
 }

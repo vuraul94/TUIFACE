@@ -11,39 +11,39 @@ package Modelo;
  */
 public class Computador extends Producto{
     
-    Memorias rom;
-    Memorias ram;
-    Procesadores procesador;
+    int rom;
+    int ram;
+    String procesador;
     
 
-    public Computador(int idProducto,String nombre, String descripcion, String marca, int precio, int cantidad, Memorias rom, Memorias ram, Procesadores procesador) {
+    public Computador(int idProducto,String nombre, String descripcion, String marca, int precio, int cantidad, int rom, int ram, String procesador) {
         super(idProducto,nombre, descripcion, marca, precio, cantidad);
         this.rom=rom;
         this.ram=ram;
         this.procesador=procesador;
     }
 
-    public Memorias getRom() {
+    public int getRom() {
         return rom;
     }
 
-    public void setRom(Memorias rom) {
+    public void setRom(int rom) {
         this.rom = rom;
     }
 
-    public Memorias getRam() {
+    public int getRam() {
         return ram;
     }
 
-    public void setRam(Memorias ram) {
+    public void setRam(int ram) {
         this.ram = ram;
     }
 
-    public Procesadores getProcesador() {
+    public String getProcesador() {
         return procesador;
     }
 
-    public void setProcesador(Procesadores procesador) {
+    public void setProcesador(String procesador) {
         this.procesador = procesador;
     }
     
