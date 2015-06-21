@@ -405,4 +405,5 @@ public class RegistroProductos extends RegistroBD {
             }
         return matriz;
     }
+    
 }
