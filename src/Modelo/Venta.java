@@ -13,21 +13,11 @@ import java.util.ArrayList;
  */
 public class Venta {
     
-    ArrayList<Producto> productosVendidos;
     int montoTotalAdquirido;
 
     
-    public Venta(ArrayList<Producto> productosVendidos, int montoTotalAdquirido) {
-        this.productosVendidos = productosVendidos;
+    public Venta(int montoTotalAdquirido) {
         this.montoTotalAdquirido = montoTotalAdquirido;
-    }
-
-    public ArrayList<Producto> getProductosVendidos() {
-        return productosVendidos;
-    }
-
-    public void setProductosVendidos(ArrayList<Producto> productosVendidos) {
-        this.productosVendidos = productosVendidos;
     }
 
     public int getMontoAdquirido() {

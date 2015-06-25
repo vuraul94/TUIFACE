@@ -11,7 +11,7 @@ import Vista.Inventario;
 import Vista.GUIRegistroProductos;
 import Vista.GUIRegistroProveedores;
 import Vista.Reporte;
-import Vista.Venta;
+import Vista.GUIVenta;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -54,8 +54,14 @@ public class ControlGUIPrincipal implements ActionListener {
         }  
         if (e.getActionCommand().equals(GUIPrincipal.MNI_VENTA)
                 || e.getActionCommand().equals(GUIPrincipal.BTN_VENTA)) {
-            Venta venta = new Venta();
-            venta.setVisible(true);
+            try {
+                GUIVenta venta = new GUIVenta();
+                venta.setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(ControlGUIPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ControlGUIPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         if (e.getActionCommand().equals(GUIPrincipal.MNI_INVENTARIO)
                 || e.getActionCommand().equals(GUIPrincipal.BTN_INVENTARIO)) {
