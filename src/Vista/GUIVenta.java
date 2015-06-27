@@ -48,6 +48,7 @@ public class GUIVenta extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         btnNuevaVenta.setText("Nueva Venta");
 
@@ -97,6 +98,7 @@ public class GUIVenta extends javax.swing.JFrame {
                 "ID Producto", "Nombre", "Cantidad", "Monto"
             }
         ));
+        tbFactura.setEnabled(false);
         jScrollPane1.setViewportView(tbFactura);
 
         btnCancelar.setText("Cancelar");
@@ -238,6 +240,7 @@ public class GUIVenta extends javax.swing.JFrame {
         this.txtCantidad.setEnabled(true);
         this.txtIDProducto.setEnabled(true);
         this.lbMontoFinal.setEnabled(true);
+        this.tbFactura.setEnabled(true);
         this.jLabel1.setEnabled(true);
         this.jLabel2.setEnabled(true);
         this.jLabel3.setEnabled(true);
@@ -252,6 +255,7 @@ public class GUIVenta extends javax.swing.JFrame {
         this.txtCantidad.setEnabled(false);
         this.txtIDProducto.setEnabled(false);
         this.lbMontoFinal.setEnabled(false);
+        this.tbFactura.setEnabled(false);
         this.jLabel1.setEnabled(false);
         this.jLabel2.setEnabled(false);
         this.jLabel3.setEnabled(false);

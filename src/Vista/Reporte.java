@@ -51,6 +51,7 @@ public class Reporte extends javax.swing.JFrame {
         cboxYear = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         tbReporte.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

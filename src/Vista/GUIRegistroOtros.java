@@ -59,6 +59,7 @@ public class GUIRegistroOtros extends javax.swing.JFrame {
         jLabel8.setText("jLabel8");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         btnRegistrar.setText("Registrar");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
