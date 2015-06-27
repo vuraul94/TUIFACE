@@ -6,6 +6,7 @@
 package Controlador;
 
 import Modelo.RegistroVenta;
+import Modelo.Venta;
 import Vista.GUIVenta;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -41,6 +42,8 @@ public class ControlVenta implements ActionListener{
         if(e.getActionCommand().equals(GUIVenta.BTN_AGREGAR)){
             try {
                 registro.incluirProducto(guiVenta.getTxtIDProducto(), guiVenta.getTxtCantidad());
+                guiVenta.setlbMontoFinal(String.valueOf(registro.getTotal()));
+                guiVenta.setValores(registro.getMatrizFactura(), Venta.getEtiquetas());
             } catch (SQLException ex) {
                 Logger.getLogger(ControlVenta.class.getName()).log(Level.SEVERE, null, ex);
             }

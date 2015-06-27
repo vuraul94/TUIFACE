@@ -13,8 +13,10 @@ import java.util.ArrayList;
  */
 public class Venta {
     
-    int montoTotalAdquirido;
+    private int montoTotalAdquirido;
+    private static String[] etiquetas = {"ID Producto", "Nombre", "Cantidad", "Monto"};
 
+    
     
     public Venta(int montoTotalAdquirido) {
         this.montoTotalAdquirido = montoTotalAdquirido;
@@ -29,6 +31,13 @@ public class Venta {
     }
 
 
+    public static String[] getEtiquetas() {
+        return etiquetas;
+    }
+
+    public static int getNumeroAtributos() {
+        return etiquetas.length;
+    }
     
     
     

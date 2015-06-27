@@ -246,5 +246,12 @@ public class GUIVenta extends javax.swing.JFrame {
 
         this.btnNuevaVenta.setEnabled(true);
     }
+    
+    public void setValores(String[][] datosFilas, String etiquetas[]) {
+        if (datosFilas != null) {
+            tbFactura.setModel(new javax.swing.table.DefaultTableModel(datosFilas, etiquetas));
+            jScrollPane1.setViewportView(tbFactura);
+        }
+    }
 
 }
