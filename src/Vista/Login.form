@@ -88,7 +88,7 @@
     <Container class="javax.swing.JPanel" name="jPanel2">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="b0" green="5f" red="17" type="rgb"/>
+          <Color blue="7a" green="3c" red="34" type="rgb"/>
         </Property>
       </Properties>
 
@@ -97,7 +97,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -105,7 +105,7 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="txtUsuario" min="-2" pref="158" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -172,7 +172,7 @@
     <Component class="Vista.BtnsLogin" name="btnsLogin1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="2a" green="48" red="ff" type="rgb"/>
+          <Color blue="55" green="6b" red="ef" type="rgb"/>
         </Property>
       </Properties>
     </Component>
