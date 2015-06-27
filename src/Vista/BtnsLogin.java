@@ -40,7 +40,7 @@ public class BtnsLogin extends javax.swing.JPanel {
         btnEntrar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(57, 214, 132));
+        setBackground(new java.awt.Color(239, 107, 85));
 
         btnEntrar.setText("Entrar");
 
