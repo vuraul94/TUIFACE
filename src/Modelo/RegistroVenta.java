@@ -97,7 +97,7 @@ public class RegistroVenta extends RegistroBD {
         return matriz;
     }
 
-    public ArrayList<String[]> consultarVentas(int mes) {
+    public ArrayList<String[]> consultarVentas(int mes, int año) {
         String[] datos = new String[3];
         ArrayList<String[]> listaVentas = new ArrayList<String[]>();
         try {
@@ -106,40 +106,40 @@ public class RegistroVenta extends RegistroBD {
                 case 0:
                     sql= sql; 
                 case 1:
-                    sql = sql + "where month(fecha)= 1";
+                    sql = sql + "where month(fecha)= 1 and year(fecha)= "+año;
                     break;
                 case 2:
-                    sql = sql + "where month(fecha)= 2";
+                    sql = sql + "where month(fecha)= 2 and year(fecha)= "+año;
                     break;
                 case 3:
-                    sql = sql + "where month(fecha)= 3";
+                    sql = sql + "where month(fecha)= 3 and year(fecha)= "+año;
                     break;
                 case 4:
-                    sql = sql + "where month(fecha)= 4";
+                    sql = sql + "where month(fecha)= 4 and year(fecha)= "+año;
                     break;
                 case 5:
-                    sql = sql + "where month(fecha)= 5";
+                    sql = sql + "where month(fecha)= 5 and year(fecha)= "+año;
                     break;
                 case 6:
-                    sql = sql + "where month(fecha)= 6";
+                    sql = sql + "where month(fecha)= 6 and year(fecha)= "+año;
                     break;
                 case 7:
-                    sql = sql + "where month(fecha)= 7";
+                    sql = sql + "where month(fecha)= 7 and year(fecha)= "+año;
                     break;
                 case 8:
-                    sql = sql + "where month(fecha)= 8";
+                    sql = sql + "where month(fecha)= 8 and year(fecha)= "+año;
                     break;
                 case 9:
-                    sql = sql + "where month(fecha)= 9";
+                    sql = sql + "where month(fecha)= 9 and year(fecha)= "+año;
                     break;
                 case 10:
-                    sql = sql + "where month(fecha)= 10";
+                    sql = sql + "where month(fecha)= 10 and year(fecha)= "+año;
                     break;
                 case 11:
-                    sql = sql + "where month(fecha)= 11";
+                    sql = sql + "where month(fecha)= 11 and year(fecha)= "+año;
                     break;
                 case 12:
-                    sql = sql + "where month(fecha)= 12";
+                    sql = sql + "where month(fecha)= 12 and year(fecha)= "+año;
                     break;
                     
             }
@@ -157,7 +157,7 @@ public class RegistroVenta extends RegistroBD {
         return listaVentas;
     }
     
-    public double totalVentas(int mes) {
+    public double totalVentas(int mes,int año) {
         double total=0;
         try {
             sql = "select sum(total) from tb_venta ";
@@ -165,40 +165,40 @@ public class RegistroVenta extends RegistroBD {
                 case 0:
                     sql= sql; 
                 case 1:
-                    sql = sql + "where month(fecha)= 1";
+                    sql = sql + "where month(fecha)= 1 and year(fecha)= "+año;
                     break;
                 case 2:
-                    sql = sql + "where month(fecha)= 2";
+                    sql = sql + "where month(fecha)= 2 and year(fecha)= " +año;
                     break;
                 case 3:
-                    sql = sql + "where month(fecha)= 3";
+                    sql = sql + "where month(fecha)= 3 and year(fecha)= " +año;
                     break;
                 case 4:
-                    sql = sql + "where month(fecha)= 4";
+                    sql = sql + "where month(fecha)= 4 and year(fecha)= " +año;
                     break;
                 case 5:
-                    sql = sql + "where month(fecha)= 5";
+                    sql = sql + "where month(fecha)= 5 and year(fecha)= " +año;
                     break;
                 case 6:
-                    sql = sql + "where month(fecha)= 6";
+                    sql = sql + "where month(fecha)= 6 and year(fecha)= " +año;
                     break;
                 case 7:
-                    sql = sql + "where month(fecha)= 7";
+                    sql = sql + "where month(fecha)= 7 and year(fecha)= " +año;
                     break;
                 case 8:
-                    sql = sql + "where month(fecha)= 8";
+                    sql = sql + "where month(fecha)= 8 and year(fecha)= " +año;
                     break;
                 case 9:
-                    sql = sql + "where month(fecha)= 9";
+                    sql = sql + "where month(fecha)= 9 and year(fecha)= " +año;
                     break;
                 case 10:
-                    sql = sql + "where month(fecha)= 10";
+                    sql = sql + "where month(fecha)= 10 and year(fecha)= " +año;
                     break;
                 case 11:
-                    sql = sql + "where month(fecha)= 11";
+                    sql = sql + "where month(fecha)= 11 and year(fecha)= " +año;
                     break;
                 case 12:
-                    sql = sql + "where month(fecha)= 12";
+                    sql = sql + "where month(fecha)= 12 and year(fecha)= " +año;
                     break;          
             }
             resultado = this.consulta(sql);
@@ -210,8 +210,8 @@ public class RegistroVenta extends RegistroBD {
         return total;
     }
 
-    public String[][] getMatrizVentas(int mes) {
-        ArrayList<String[]> listaVentas = consultarVentas(mes);
+    public String[][] getMatrizVentas(int mes, int año) {
+        ArrayList<String[]> listaVentas = consultarVentas(mes,año);
         String[][] matriz = new String[listaVentas.size()][3];
         for (int fila = 0; fila < matriz.length; fila++) {
             for (int columna = 0; columna < matriz[fila].length; columna++) {
@@ -219,6 +219,13 @@ public class RegistroVenta extends RegistroBD {
             }
         }
         return matriz;
+    }
+    
+    public int getThisYear() throws SQLException{
+        sql="select(year(sysdate()))";
+        resultado=this.consulta(sql);
+        resultado.next();
+        return resultado.getInt("(year(sysdate()))");
     }
 
 }

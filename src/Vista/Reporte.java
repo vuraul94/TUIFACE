@@ -8,6 +8,7 @@ package Vista;
 import Controlador.ControlReporte;
 import Modelo.RegistroVenta;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -27,6 +28,7 @@ public class Reporte extends javax.swing.JFrame {
         ControlReporte control= new ControlReporte(this);
         this.escuchar(control);
         this.cargarFiltro();
+        this.cargarFiltroYear(registro.getThisYear());
     }
 
     /**
@@ -45,6 +47,8 @@ public class Reporte extends javax.swing.JFrame {
         cboxMes = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
         lbTotal = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        cboxYear = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -79,6 +83,15 @@ public class Reporte extends javax.swing.JFrame {
         lbTotal.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbTotal.setText("0.0");
 
+        jLabel3.setText("año:");
+
+        cboxYear.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboxYear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxYearActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -98,7 +111,11 @@ public class Reporte extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cboxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cboxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cboxYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 25, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -109,7 +126,9 @@ public class Reporte extends javax.swing.JFrame {
                 .addContainerGap(13, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(cboxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cboxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(cboxYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -131,6 +150,10 @@ public class Reporte extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cboxMesActionPerformed
 
+    private void cboxYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxYearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboxYearActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -138,8 +161,10 @@ public class Reporte extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox cboxMes;
+    private javax.swing.JComboBox cboxYear;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbTotal;
     private javax.swing.JTable tbReporte;
@@ -149,6 +174,7 @@ public class Reporte extends javax.swing.JFrame {
     
     public void escuchar(ControlReporte control){
         this.btnSalir.addActionListener(control);
+        this.cboxYear.addItemListener(control);
         this.cboxMes.addItemListener(control);
     }
     public void cargarFiltro() {
@@ -156,8 +182,22 @@ public class Reporte extends javax.swing.JFrame {
         this.cboxMes.setModel(new DefaultComboBoxModel(filtro));
     }
     
+    public void cargarFiltroYear(int finalYear) {
+        ArrayList<String> years= new ArrayList<String>();
+        for (int i = 2015; i <= finalYear; i++) {
+            years.add(String.valueOf(i));
+        }
+        String[] filtro= new String[years.size()];
+        filtro=years.toArray(filtro);
+        this.cboxYear.setModel(new DefaultComboBoxModel(filtro));
+    }
+    
     public String getCboxCategoria() {
         return this.cboxMes.getSelectedItem().toString();
+    }
+    
+    public String getCboxYear() {
+        return this.cboxYear.getSelectedItem().toString();
     }
     
      public String getlbTotal() {
