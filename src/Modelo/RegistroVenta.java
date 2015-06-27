@@ -36,7 +36,17 @@ public class RegistroVenta extends RegistroBD {
         resultado.next();
         return resultado.getDouble("total");
     }
-
+    
+    public boolean confirmarCantidad(int codigo,int cantidad) throws SQLException{
+        sql="select cantidad from tb_productos where id_producto=" + codigo;
+        resultado=this.consulta(sql);
+        resultado.next();
+        if(resultado.getInt("cantidad")<cantidad){
+            return false;
+        }else{
+            return true;
+        }
+    }
     public void incluirProducto(int codigo, int cantidad) throws SQLException {
         sql = "select Precio from tb_productos where id_producto=" + codigo;
         resultado = this.consulta(sql);
@@ -59,6 +69,8 @@ public class RegistroVenta extends RegistroBD {
         sql = "update tb_venta set total= " + total
                 + " where id_venta="
                 + "(select max(id_Venta) from(select * from tb_venta)as x)";
+        this.proceso(sql);
+        sql="update tb_productos set cantidad=(select cantidad from(select * from tb_productos where id_producto= "+codigo+")as x)-"+cantidad+" where id_producto="+codigo+";";
         this.proceso(sql);
     }
 
@@ -229,6 +241,8 @@ public class RegistroVenta extends RegistroBD {
     }
     
     public void cancelarVenta() throws SQLException{
+        sql="delete from tb_venta where ID_Factura=(select max(id_Venta) from(select * from tb_venta)as x);";
+        this.proceso(sql);
         sql="delete from tb_venta where ID_Venta=(select max(id_Venta) from(select * from tb_venta)as x);";
         this.proceso(sql);
     }

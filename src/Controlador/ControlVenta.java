@@ -41,10 +41,14 @@ public class ControlVenta implements ActionListener {
         }
         if (e.getActionCommand().equals(GUIVenta.BTN_AGREGAR)) {
             try {
-                registro.incluirProducto(guiVenta.getTxtIDProducto(), guiVenta.getTxtCantidad());
-                guiVenta.setlbMontoFinal(String.valueOf(registro.getTotal()));
-                guiVenta.setValores(registro.getMatrizFactura(), Venta.getEtiquetasFactura());
-                guiVenta.limpiar();
+                if (registro.confirmarCantidad(guiVenta.getTxtIDProducto(), guiVenta.getTxtCantidad())) {
+                    registro.incluirProducto(guiVenta.getTxtIDProducto(), guiVenta.getTxtCantidad());
+                    guiVenta.setlbMontoFinal(String.valueOf(registro.getTotal()));
+                    guiVenta.setValores(registro.getMatrizFactura(), Venta.getEtiquetasFactura());
+                    guiVenta.limpiar();
+                } else {
+                    guiVenta.mensaje("No hay suficiente en stock");
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(ControlVenta.class.getName()).log(Level.SEVERE, null, ex);
             }
