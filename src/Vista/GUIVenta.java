@@ -45,6 +45,7 @@ public class GUIVenta extends javax.swing.JFrame {
         btnFacturar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbFactura = new javax.swing.JTable();
+        btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -98,6 +99,9 @@ public class GUIVenta extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tbFactura);
 
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setEnabled(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -109,12 +113,9 @@ public class GUIVenta extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addGap(293, 293, 293)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btnFacturar, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(lbMontoFinal))))
+                            .addComponent(jLabel2)
+                            .addGap(18, 18, 18)
+                            .addComponent(lbMontoFinal))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel1)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -127,6 +128,12 @@ public class GUIVenta extends javax.swing.JFrame {
                             .addComponent(btnAgregar)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCancelar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnFacturar)
+                .addGap(41, 41, 41))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,7 +154,9 @@ public class GUIVenta extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(lbMontoFinal))
                 .addGap(18, 18, 18)
-                .addComponent(btnFacturar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnFacturar)
+                    .addComponent(btnCancelar))
                 .addGap(25, 25, 25))
         );
 
@@ -172,6 +181,7 @@ public class GUIVenta extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnFacturar;
     private javax.swing.JButton btnNuevaVenta;
     private javax.swing.JLabel jLabel1;
@@ -186,13 +196,15 @@ public class GUIVenta extends javax.swing.JFrame {
 
     public static final String BTN_AGREGAR = "Agregar";
     public static final String BTN_FACTURAR = "Facturar";
-    public static final String BTN_NUEVA_VENTA = "Nueva Venta";
+    public static final String BTN_NUEVA_VENTA = "Nueva Venta";   
+    public static final String BTN_CANCELAR = "Cancelar";
     
 
     public void escuchar(ActionListener control) {
         this.btnAgregar.addActionListener(control);
         this.btnFacturar.addActionListener(control);
         this.btnNuevaVenta.addActionListener(control);
+        this.btnCancelar.addActionListener(control);
     }
 
     public int getTxtIDProducto() {
@@ -222,6 +234,7 @@ public class GUIVenta extends javax.swing.JFrame {
     public void enableTodo(){
         this.btnAgregar.setEnabled(true);
         this.btnFacturar.setEnabled(true);
+        this.btnCancelar.setEnabled(true);
         this.txtCantidad.setEnabled(true);
         this.txtIDProducto.setEnabled(true);
         this.lbMontoFinal.setEnabled(true);
@@ -235,12 +248,14 @@ public class GUIVenta extends javax.swing.JFrame {
     public void disableTodo(){
         this.btnAgregar.setEnabled(false);
         this.btnFacturar.setEnabled(false);
+        this.btnCancelar.setEnabled(false);
         this.txtCantidad.setEnabled(false);
         this.txtIDProducto.setEnabled(false);
         this.lbMontoFinal.setEnabled(false);
         this.jLabel1.setEnabled(false);
         this.jLabel2.setEnabled(false);
         this.jLabel3.setEnabled(false);
+        
 
         this.btnNuevaVenta.setEnabled(true);
     }

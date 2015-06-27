@@ -18,19 +18,19 @@ import java.util.logging.Logger;
  *
  * @author Raul
  */
-public class ControlVenta implements ActionListener{
-    
+public class ControlVenta implements ActionListener {
+
     GUIVenta guiVenta;
     RegistroVenta registro;
 
     public ControlVenta(GUIVenta guiVenta) throws SQLException, ClassNotFoundException {
         this.guiVenta = guiVenta;
-        this.registro= new RegistroVenta();
+        this.registro = new RegistroVenta();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals(GUIVenta.BTN_NUEVA_VENTA)){
+        if (e.getActionCommand().equals(GUIVenta.BTN_NUEVA_VENTA)) {
             try {
                 this.guiVenta.enableTodo();
                 registro.crearNuevaVenta();
@@ -39,7 +39,7 @@ public class ControlVenta implements ActionListener{
                 Logger.getLogger(ControlVenta.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        if(e.getActionCommand().equals(GUIVenta.BTN_AGREGAR)){
+        if (e.getActionCommand().equals(GUIVenta.BTN_AGREGAR)) {
             try {
                 registro.incluirProducto(guiVenta.getTxtIDProducto(), guiVenta.getTxtCantidad());
                 guiVenta.setlbMontoFinal(String.valueOf(registro.getTotal()));
@@ -49,16 +49,26 @@ public class ControlVenta implements ActionListener{
                 Logger.getLogger(ControlVenta.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        if(e.getActionCommand().equals(GUIVenta.BTN_FACTURAR)){
+        if (e.getActionCommand().equals(GUIVenta.BTN_FACTURAR)) {
             try {
-                String[][] matrizVacia= new String[0][0];
+                String[][] matrizVacia = new String[0][0];
                 guiVenta.setValores(matrizVacia, Venta.getEtiquetasFactura());
                 guiVenta.disableTodo();
-                guiVenta.mensaje("Debe pagar un total de:\n "+registro.getTotal()+" colones");
+                guiVenta.mensaje("Debe pagar un total de:\n " + registro.getTotal() + " colones");
+            } catch (SQLException ex) {
+                Logger.getLogger(ControlVenta.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if (e.getActionCommand().equals(GUIVenta.BTN_CANCELAR)) {
+            try {
+                String[][] matrizVacia = new String[0][0];
+                guiVenta.setValores(matrizVacia, Venta.getEtiquetasFactura());
+                guiVenta.disableTodo();
+                registro.cancelarVenta();
             } catch (SQLException ex) {
                 Logger.getLogger(ControlVenta.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
-    
+
 }

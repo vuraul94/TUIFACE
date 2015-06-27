@@ -227,5 +227,10 @@ public class RegistroVenta extends RegistroBD {
         resultado.next();
         return resultado.getInt("(year(sysdate()))");
     }
+    
+    public void cancelarVenta() throws SQLException{
+        sql="delete from tb_venta where ID_Venta=(select max(id_Venta) from(select * from tb_venta)as x);";
+        this.proceso(sql);
+    }
 
 }

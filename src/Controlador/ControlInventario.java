@@ -68,6 +68,9 @@ public class ControlInventario implements ActionListener, ItemListener, MouseLis
                 //inventario.limpiar();
             }
         }
+        if (e.getActionCommand().equals(Inventario.BTN_SALIR)){
+            this.inventario.dispose();
+        }
     }
 
     @Override
