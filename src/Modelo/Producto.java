@@ -11,7 +11,7 @@ package Modelo;
  */
 public class Producto {
 
-    private int idProducto;
+    private String idProducto;
     private String nombre;
     private String descripcion;
     private String marca;
@@ -19,7 +19,7 @@ public class Producto {
     private int cantidad;
     private static String[] etiquetas = {"Carnet", "Nombre", "Marca", "Precio", "Cantidad"};
 
-    public Producto(int idProducto, String nombre, String descripcion, String marca, int precio, int cantidad) {
+    public Producto(String idProducto, String nombre, String descripcion, String marca, int precio, int cantidad) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -28,11 +28,11 @@ public class Producto {
         this.cantidad = cantidad;
     }
 
-    public int getIdProducto() {
+    public String getIdProducto() {
         return idProducto;
     }
 
-    public void setIdProducto(int idProducto) {
+    public void setIdProducto(String idProducto) {
         this.idProducto = idProducto;
     }
 

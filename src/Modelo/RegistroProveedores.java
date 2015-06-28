@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Raul
+ * @author Né
  */
 public class RegistroProveedores extends RegistroBD {
 
@@ -90,7 +90,7 @@ public class RegistroProveedores extends RegistroBD {
             sql = "select * from tb_proveedor";
             resultado = this.consulta(sql);
             while (resultado.next()) {
-                listaProveedores.add(new Proveedores(resultado.getInt("id"), resultado.getString("nombre"),resultado.getString("direccion"),resultado.getString("correo"),resultado.getString("telefono")));
+                listaProveedores.add(new Proveedores(resultado.getString("id"), resultado.getString("nombre"),resultado.getString("direccion"),resultado.getString("correo"),resultado.getString("telefono")));
             }
 
         } catch (SQLException ex) {
@@ -99,12 +99,12 @@ public class RegistroProveedores extends RegistroBD {
         return listaProveedores;
     }
 
-    public Proveedores verificarID(int id) {
+    public Proveedores verificarID(String id) {
         try {
             sql = "select * from tb_proveedor where id_proveedor=" + id ;
             resultado = this.consulta(sql);
             while (resultado.next()) {
-                return new Proveedores(resultado.getInt("id_proveedor"), resultado.getString("nombre"),resultado.getString("direccion"),resultado.getString("correo"),resultado.getString("telefono"));
+                return new Proveedores(resultado.getString("id_proveedor"), resultado.getString("nombre"),resultado.getString("direccion"),resultado.getString("correo"),resultado.getString("telefono"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(RegistroProveedores.class.getName()).log(Level.SEVERE, null, ex);

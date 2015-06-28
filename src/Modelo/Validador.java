@@ -10,16 +10,17 @@ import java.util.regex.Pattern;
 
 /**
  *
- * @author raul
+ * @author Né
  */
 public class Validador {
+
     private static Pattern patron;
     private static Matcher match;
-    
-    public static boolean validarID(int ID){
-        patron=Pattern.compile("\\d\\d\\d\\d");
-        match=patron.matcher(String.valueOf(ID));
-        if(match.find()){
+
+    public static boolean validarID(String ID) {
+        patron = Pattern.compile("\\d{4}");
+        match = patron.matcher(String.valueOf(ID));
+        if (match.find()) {
             return true;
         }
         return false;
@@ -35,43 +36,26 @@ public class Validador {
         }
         return false;
     }
-    
-    public static boolean validarTelefono(String telefono){
-        patron=Pattern.compile("^\\+\\d{1,3}-\\d{4}-\\d{4}$");
-        match=patron.matcher(telefono);
-        if(match.find()){
+
+    public static boolean validarTelefono(String telefono) {
+        patron = Pattern.compile("^\\+\\d{1,3}-\\d{4}-\\d{2}-\\d{2}$");
+        match = patron.matcher(telefono);
+        if (match.find()) {
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean validarNumeros(String num) {
+        patron = Pattern.compile("^[0-9]+$");
+        match = patron.matcher(num);
+        if (match.find()) {
             return true;
         }
         return false;
     }
     
-    public static boolean validarEdad(String edad){
-        patron=Pattern.compile("Wd{1,3}$");
-        match=patron.matcher(edad);
-        if(match.find()){
-            return true;
-        }
-        return false;
-    }
-    
-    public static boolean validarCantidad(String cantidad){
-       patron=Pattern.compile("\\d{0-9}");
-        match=patron.matcher(cantidad);
-        if(match.find()){
-            return true;
-        }
-        return false; 
-    }
-    
-    public static boolean validarPrecio(String precio){
-       patron=Pattern.compile("\\d{0-9}");
-        match=patron.matcher(precio);
-        if(match.find()){
-            return true;
-        }
-        return false; 
-    }
-    
+
     public static boolean validarDireccion(String direccion) {
         String patronV = "(^[0-9+-,|°¬!#$%&/()=¡*¨_:;~^@]{2,100})$";
         patron = Pattern.compile(patronV);
@@ -82,7 +66,7 @@ public class Validador {
             return true;
         }
     }
-    
+
     public static boolean validarNombre(String nombre) {
         String patronV = "(^[0-9+-,|°¬!#$%&/()=¡*¨_:;~^@]{2,100})$";
         patron = Pattern.compile(patronV);
@@ -93,8 +77,5 @@ public class Validador {
             return true;
         }
     }
-    
-    
-    
-    
+
 }

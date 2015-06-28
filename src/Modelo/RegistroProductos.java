@@ -86,12 +86,12 @@ public class RegistroProductos extends RegistroBD {
         return salida;
     }
 
-    public Producto verificarID(int id) {
+    public Producto verificarID(String id) {
         try {
             sql = "select * from tb_productos where id_producto not in (select id_producto from tb_procesadores) and id_producto=" + id;
             resultado = this.consulta(sql);
             while (resultado.next()) {
-                return new Producto(resultado.getInt("id_producto"), resultado.getString("nombre"), resultado.getString("descripcion"), resultado.getString("marca"), resultado.getInt("precio"), resultado.getInt("cantidad"));
+                return new Producto(resultado.getString("id_producto"), resultado.getString("nombre"), resultado.getString("descripcion"), resultado.getString("marca"), resultado.getInt("precio"), resultado.getInt("cantidad"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(RegistroProveedores.class.getName()).log(Level.SEVERE, null, ex);
@@ -163,13 +163,13 @@ public class RegistroProductos extends RegistroBD {
         return salida;
     }
 
-    public Procesadores verificarIDProcesador(int id) {
+    public Procesadores verificarIDProcesador(String id) {
         try {
-            sql = "select * from tb_productos Pd,tb_procesadores Pr where Pr.ID_Producto in (select ID_Producto from tb_procesadores)"
-                    + "and Pd.ID_Producto= Pr.ID_Producto and Pd.id_producto=" + id;
+            sql = "select * from tb_productos Pd,tb_procesadores Pr where Pd.ID_Producto= Pr.ID_Producto"
+                    + " and Pd.id_producto=" + id;
             resultado = this.consulta(sql);
             while (resultado.next()) {
-                return new Procesadores(resultado.getInt("id_producto"), resultado.getString("nombre"), resultado.getString("descripcion"), resultado.getString("marca"), resultado.getInt("precio"), resultado.getInt("cantidad"), resultado.getInt("nucleos"), resultado.getInt("frecuencia"));
+                return new Procesadores(resultado.getString("id_producto"), resultado.getString("nombre"), resultado.getString("descripcion"), resultado.getString("marca"), resultado.getInt("precio"), resultado.getInt("cantidad"), resultado.getInt("nucleos"), resultado.getInt("frecuencia"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(RegistroProveedores.class.getName()).log(Level.SEVERE, null, ex);
@@ -239,13 +239,13 @@ public class RegistroProductos extends RegistroBD {
         return salida;
     }
 
-    public Memorias verificarIDMemoria(int id) {
+    public Memorias verificarIDMemoria(String id) {
         try {
-            sql = "select * from tb_productos Pd,tb_memorias M where M.ID_Producto in (select ID_Producto from tb_memorias)"
-                    + "and Pd.ID_Producto= M.ID_Producto and M.id_producto=" + id;
+            sql = "select * from tb_productos Pd,tb_memorias M where Pd.ID_Producto= M.ID_Producto"
+                    +" and M.id_producto= " + id;
             resultado = this.consulta(sql);
             while (resultado.next()) {
-                return new Memorias(resultado.getInt("id_producto"), resultado.getString("nombre"), resultado.getString("descripcion"), resultado.getString("marca"), resultado.getInt("precio"), resultado.getInt("cantidad"), resultado.getString("capacidad"));
+                return new Memorias(resultado.getString("id_producto"), resultado.getString("nombre"), resultado.getString("descripcion"), resultado.getString("marca"), resultado.getInt("precio"), resultado.getInt("cantidad"), resultado.getString("capacidad"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(RegistroProveedores.class.getName()).log(Level.SEVERE, null, ex);
@@ -254,15 +254,15 @@ public class RegistroProductos extends RegistroBD {
     }
 
     //***************************************************Computadores
-    public String incluirComputadores(Computador memoria) {
+    public String incluirComputadores(Computador computador) {
         salida = "";
         try {
-            if (verificarIDComputador(memoria.getIdProducto()) == null) {
+            if (verificarIDComputador(computador.getIdProducto()) == null) {
                 sql = "insert into tb_computadores values("
-                        + memoria.getIdProducto()
-                        + "," + memoria.getRom()
-                        + "," + memoria.getRam()
-                        + ",'" + memoria.getProcesador()
+                        + computador.getIdProducto()
+                        + "," + computador.getRom()
+                        + "," + computador.getRam()
+                        + ",'" + computador.getProcesador()
                         + "');";
                 this.proceso(sql);
                 salida = "La información se agregó correctamente.";
@@ -319,13 +319,13 @@ public class RegistroProductos extends RegistroBD {
         return salida;
     }
 
-    public Computador verificarIDComputador(int id) {
+    public Computador verificarIDComputador(String id) {
         try {
-            sql = "select * from tb_productos Pd, tb_computadores C where C.ID_Producto in (select ID_Producto from tb_computadores)"
-                    + "and Pd.ID_Producto= C.ID_Producto and C.id_producto=" + id;
+            sql = "select * from tb_productos Pd, tb_computadores C where Pd.ID_Producto= C.ID_Producto"
+                    + " and C.id_producto=" + id;
             resultado = this.consulta(sql);
             while (resultado.next()) {
-                return new Computador(resultado.getInt("id_producto"), resultado.getString("nombre"), resultado.getString("descripcion"), resultado.getString("marca"), resultado.getInt("precio"), resultado.getInt("cantidad"), resultado.getInt("rom"), resultado.getInt("ram"), resultado.getString("procesador"));
+                return new Computador(resultado.getString("id_producto"), resultado.getString("nombre"), resultado.getString("descripcion"), resultado.getString("marca"), resultado.getInt("precio"), resultado.getInt("cantidad"), resultado.getInt("rom"), resultado.getInt("ram"), resultado.getString("procesador"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(RegistroProveedores.class.getName()).log(Level.SEVERE, null, ex);
@@ -341,7 +341,7 @@ public class RegistroProductos extends RegistroBD {
             sql = "select * from tb_productos";
             resultado = this.consulta(sql);
             while (resultado.next()) {
-                listaProductos.add(new Producto(resultado.getInt("id_producto"), resultado.getString("nombre"), resultado.getString("descripcion"), resultado.getString("marca"), resultado.getInt("precio"), resultado.getInt("cantidad")));
+                listaProductos.add(new Producto(resultado.getString("id_producto"), resultado.getString("nombre"), resultado.getString("descripcion"), resultado.getString("marca"), resultado.getInt("precio"), resultado.getInt("cantidad")));
             }
 
         } catch (SQLException ex) {
