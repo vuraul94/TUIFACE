@@ -96,5 +96,35 @@ public class RegistroVenta extends RegistroBD {
         }
         return matriz;
     }
+    
+    public ArrayList<String[]> consultarVentas() {
+        String[] datos = new String[3];
+        ArrayList<String[]> listaVentas = new ArrayList<String[]>();
+        try {
+            sql = "select * from tb_venta where month(fecha)=(select(month(sysdate())));";
+            resultado = this.consulta(sql);
+            while(resultado.next()){
+            datos[0] = resultado.getString("id_venta");
+            datos[1] = resultado.getString("fecha");
+            datos[2] = resultado.getString("total");
+            listaVentas.add(datos);
+            datos=new String[4];
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistroProveedores.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listaVentas;
+    }
+
+    public String[][] getMatrizVentas() {
+        ArrayList<String[]> listaVentas = consultarVentas();
+        String[][] matriz = new String[listaVentas.size()][3];
+        for (int fila = 0; fila < matriz.length; fila++) {
+            for (int columna = 0; columna < matriz[fila].length; columna++) {
+                matriz[fila][columna] = listaVentas.get(fila)[columna];
+            }
+        }
+        return matriz;
+    }
 
 }

@@ -43,7 +43,7 @@ public class ControlVenta implements ActionListener{
             try {
                 registro.incluirProducto(guiVenta.getTxtIDProducto(), guiVenta.getTxtCantidad());
                 guiVenta.setlbMontoFinal(String.valueOf(registro.getTotal()));
-                guiVenta.setValores(registro.getMatrizFactura(), Venta.getEtiquetas());
+                guiVenta.setValores(registro.getMatrizFactura(), Venta.getEtiquetasFactura());
                 guiVenta.limpiar();
             } catch (SQLException ex) {
                 Logger.getLogger(ControlVenta.class.getName()).log(Level.SEVERE, null, ex);
@@ -52,7 +52,7 @@ public class ControlVenta implements ActionListener{
         if(e.getActionCommand().equals(GUIVenta.BTN_FACTURAR)){
             try {
                 String[][] matrizVacia= new String[0][0];
-                guiVenta.setValores(matrizVacia, Venta.getEtiquetas());
+                guiVenta.setValores(matrizVacia, Venta.getEtiquetasFactura());
                 guiVenta.disableTodo();
                 guiVenta.mensaje("Debe pagar un total de:\n "+registro.getTotal()+" colones");
             } catch (SQLException ex) {

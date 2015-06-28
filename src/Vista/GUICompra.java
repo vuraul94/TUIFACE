@@ -11,12 +11,12 @@ import java.awt.event.ActionListener;
  *
  * @author Raul
  */
-public class Compra extends javax.swing.JFrame {
+public class GUICompra extends javax.swing.JFrame {
 
     /**
      * Creates new form AgregarMercancia
      */
-    public Compra() {
+    public GUICompra() {
         initComponents();
     }
 

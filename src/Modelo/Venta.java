@@ -12,13 +12,16 @@ import java.util.ArrayList;
  * @author Raul
  */
 public class Venta {
-    
-    private int montoTotalAdquirido;
-    private static String[] etiquetas = {"ID Producto", "Nombre", "Cantidad", "Monto"};
 
-    
-    
-    public Venta(int montoTotalAdquirido) {
+    private String idVenta;
+    private String fecha;
+    private int montoTotalAdquirido;
+
+    private static String[] etiquetasFactura = {"ID Producto", "Nombre", "Cantidad", "Monto"};
+
+    public Venta(String idVenta, String fecha, int montoTotalAdquirido) {
+        this.idVenta = idVenta;
+        this.fecha = fecha;
         this.montoTotalAdquirido = montoTotalAdquirido;
     }
 
@@ -30,15 +33,12 @@ public class Venta {
         this.montoTotalAdquirido = montoAdquirido;
     }
 
-
-    public static String[] getEtiquetas() {
-        return etiquetas;
+    public static String[] getEtiquetasFactura() {
+        return etiquetasFactura;
     }
 
     public static int getNumeroAtributos() {
-        return etiquetas.length;
+        return etiquetasFactura.length;
     }
-    
-    
-    
+
 }

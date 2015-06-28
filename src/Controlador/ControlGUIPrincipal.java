@@ -5,7 +5,7 @@
  */
 package Controlador;
 
-import Vista.Compra;
+import Vista.GUICompra;
 import Vista.GUIPrincipal;
 import Vista.Inventario;
 import Vista.GUIRegistroProductos;
@@ -44,12 +44,18 @@ public class ControlGUIPrincipal implements ActionListener {
             regProductos.setVisible(true);
         }
         if (e.getActionCommand().equals(GUIPrincipal.MNI_REPORTE)) {
-            Reporte reporte = new Reporte();
-            reporte.setVisible(true);
+            try {
+                Reporte reporte = new Reporte();
+                reporte.setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(ControlGUIPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ControlGUIPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         if (e.getActionCommand().equals(GUIPrincipal.MNI_COMPRA)
                 || e.getActionCommand().equals(GUIPrincipal.BTN_COMPRA)) {
-            Compra compra = new Compra();
+            GUICompra compra = new GUICompra();
             compra.setVisible(true);
         }  
         if (e.getActionCommand().equals(GUIPrincipal.MNI_VENTA)
