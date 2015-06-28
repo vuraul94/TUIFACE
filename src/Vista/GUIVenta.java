@@ -213,7 +213,7 @@ public class GUIVenta extends javax.swing.JFrame {
     }
 
     public int getTxtCantidad() {
-        return Integer.parseInt(this.txtCantidad.getText());
+    return Integer.parseInt(this.txtCantidad.getText());
     }
 
     public void setTxtCantidad(String txtIDProducto) {

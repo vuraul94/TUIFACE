@@ -56,9 +56,11 @@ public class RegistroVenta extends RegistroBD {
         monto = (resultado.getDouble("precio"));
         monto = monto + monto * 0.10 + monto * 0.13;
         monto = monto * cantidad;
+        
         sql = "insert into tb_factura(ID_Venta,id_Producto,cantidad,monto) values"
                 + "((select max(id_venta) from tb_venta)," + codigo + "," + cantidad + "," + monto + ")";
         this.proceso(sql);
+        
         sql = "select total, id_venta from tb_venta where id_venta=(select max(id_venta) from tb_venta)";
         resultado = this.consulta(sql);
         resultado.next();

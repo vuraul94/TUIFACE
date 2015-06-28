@@ -55,7 +55,14 @@ public class ControlGUIPrincipal implements ActionListener {
         }
         if (e.getActionCommand().equals(GUIPrincipal.MNI_COMPRA)
                 || e.getActionCommand().equals(GUIPrincipal.BTN_COMPRA)) {
-            GUICompra compra = new GUICompra();
+            GUICompra compra = null;
+            try {
+                compra = new GUICompra();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControlGUIPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ControlGUIPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
             compra.setVisible(true);
         }  
         if (e.getActionCommand().equals(GUIPrincipal.MNI_VENTA)

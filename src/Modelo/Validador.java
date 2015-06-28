@@ -53,4 +53,48 @@ public class Validador {
         }
         return false;
     }
+    
+    public static boolean validarCantidad(String cantidad){
+       patron=Pattern.compile("\\d{0-9}");
+        match=patron.matcher(cantidad);
+        if(match.find()){
+            return true;
+        }
+        return false; 
+    }
+    
+    public static boolean validarPrecio(String precio){
+       patron=Pattern.compile("\\d{0-9}");
+        match=patron.matcher(precio);
+        if(match.find()){
+            return true;
+        }
+        return false; 
+    }
+    
+    public static boolean validarDireccion(String direccion) {
+        String patronV = "(^[0-9+-,|°¬!#$%&/()=¡*¨_:;~^@]{2,100})$";
+        patron = Pattern.compile(patronV);
+        match = patron.matcher(direccion);
+        if (match.find()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    public static boolean validarNombre(String nombre) {
+        String patronV = "(^[0-9+-,|°¬!#$%&/()=¡*¨_:;~^@]{2,100})$";
+        patron = Pattern.compile(patronV);
+        match = patron.matcher(nombre);
+        if (match.find()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    
+    
+    
 }
