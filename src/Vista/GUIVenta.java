@@ -8,6 +8,7 @@ package Vista;
 import Controlador.ControlVenta;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -89,13 +90,10 @@ public class GUIVenta extends javax.swing.JFrame {
 
         tbFactura.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID Producto", "Nombre", "Cantidad", "Monto"
             }
         ));
         jScrollPane1.setViewportView(tbFactura);
@@ -252,6 +250,15 @@ public class GUIVenta extends javax.swing.JFrame {
             tbFactura.setModel(new javax.swing.table.DefaultTableModel(datosFilas, etiquetas));
             jScrollPane1.setViewportView(tbFactura);
         }
+    }
+    
+    public void limpiar(){
+        this.txtCantidad.setText("");
+        this.txtIDProducto.setText("");
+    }
+    
+    public void mensaje(String mensaje){
+        JOptionPane.showMessageDialog(null, mensaje);
     }
 
 }

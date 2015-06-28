@@ -44,6 +44,17 @@ public class ControlVenta implements ActionListener{
                 registro.incluirProducto(guiVenta.getTxtIDProducto(), guiVenta.getTxtCantidad());
                 guiVenta.setlbMontoFinal(String.valueOf(registro.getTotal()));
                 guiVenta.setValores(registro.getMatrizFactura(), Venta.getEtiquetas());
+                guiVenta.limpiar();
+            } catch (SQLException ex) {
+                Logger.getLogger(ControlVenta.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if(e.getActionCommand().equals(GUIVenta.BTN_FACTURAR)){
+            try {
+                String[][] matrizVacia= new String[0][0];
+                guiVenta.setValores(matrizVacia, Venta.getEtiquetas());
+                guiVenta.disableTodo();
+                guiVenta.mensaje("Debe pagar un total de:\n "+registro.getTotal()+" colones");
             } catch (SQLException ex) {
                 Logger.getLogger(ControlVenta.class.getName()).log(Level.SEVERE, null, ex);
             }
