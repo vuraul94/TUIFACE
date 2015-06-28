@@ -16,7 +16,7 @@ public class Venta {
     private String idVenta;
     private String fecha;
     private int montoTotalAdquirido;
-
+    private static String[] etiquetas={"ID Venta","fecha","Monto"};
     private static String[] etiquetasFactura = {"ID Producto", "Nombre", "Cantidad", "Monto"};
 
     public Venta(String idVenta, String fecha, int montoTotalAdquirido) {
@@ -39,6 +39,10 @@ public class Venta {
 
     public static int getNumeroAtributos() {
         return etiquetasFactura.length;
+    }
+    
+    public static String[] getEtiquetas() {
+        return etiquetas;
     }
 
 }

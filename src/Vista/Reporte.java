@@ -5,8 +5,10 @@
  */
 package Vista;
 
+import Controlador.ControlReporte;
 import Modelo.RegistroVenta;
 import java.sql.SQLException;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -22,7 +24,9 @@ public class Reporte extends javax.swing.JFrame {
         initComponents();
         registro= new RegistroVenta();
         String[] etiquetas={"ID Venta", "fecha", "monto"};
-        this.setValores(registro.getMatrizVentas(), etiquetas);
+        ControlReporte control= new ControlReporte(this);
+        this.escuchar(control);
+        this.cargarFiltro();
     }
 
     /**
@@ -38,7 +42,9 @@ public class Reporte extends javax.swing.JFrame {
         tbReporte = new javax.swing.JTable();
         btnSalir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        cboxMes = new javax.swing.JComboBox();
+        jLabel2 = new javax.swing.JLabel();
+        lbTotal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -47,7 +53,7 @@ public class Reporte extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID Producto", "Nombre", "Cantidad", "Monto"
+                "ID Venta", "fecha", "monto"
             }
         ));
         jScrollPane1.setViewportView(tbReporte);
@@ -61,42 +67,56 @@ public class Reporte extends javax.swing.JFrame {
 
         jLabel1.setText("Reporte del mes de:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cboxMes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboxMes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cboxMesActionPerformed(evt);
             }
         });
+
+        jLabel2.setText("total:");
+
+        lbTotal.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbTotal.setText("0.0");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(380, Short.MAX_VALUE)
-                .addComponent(btnSalir)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(lbTotal)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSalir))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cboxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 25, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cboxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSalir)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalir)
+                    .addComponent(jLabel2)
+                    .addComponent(lbTotal))
                 .addContainerGap())
         );
 
@@ -107,9 +127,9 @@ public class Reporte extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void cboxMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxMesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_cboxMesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -117,12 +137,37 @@ public class Reporte extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalir;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox cboxMes;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbTotal;
     private javax.swing.JTable tbReporte;
     // End of variables declaration//GEN-END:variables
 
+    public static final String BTN_SALIR="Salir";
+    
+    public void escuchar(ControlReporte control){
+        this.btnSalir.addActionListener(control);
+        this.cboxMes.addItemListener(control);
+    }
+    public void cargarFiltro() {
+        String[] filtro = {"Seleccionar","Enero", "Febrero", "Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"};
+        this.cboxMes.setModel(new DefaultComboBoxModel(filtro));
+    }
+    
+    public String getCboxCategoria() {
+        return this.cboxMes.getSelectedItem().toString();
+    }
+    
+     public String getlbTotal() {
+        return this.lbTotal.getText().toString();
+    }
+
+    public void setlbTotal(String lbMontoFinal) {
+        this.lbTotal.setText(lbMontoFinal);
+    }
+    
     public void setValores(String[][] datosFilas, String etiquetas[]) {
         if (datosFilas != null) {
             tbReporte.setModel(new javax.swing.table.DefaultTableModel(datosFilas, etiquetas));

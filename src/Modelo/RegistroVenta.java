@@ -72,13 +72,13 @@ public class RegistroVenta extends RegistroBD {
                     + "(select max(id_Venta) from(select * from tb_venta)as x)\n"
                     + "group by F.fila;";
             resultado = this.consulta(sql);
-            while(resultado.next()){
-            datos[0] = resultado.getString("id_producto");
-            datos[1] = resultado.getString("nombre");
-            datos[2] = resultado.getString("cantidad");
-            datos[3] = resultado.getString("monto");
-            listaProductos.add(datos);
-            datos=new String[4];
+            while (resultado.next()) {
+                datos[0] = resultado.getString("id_producto");
+                datos[1] = resultado.getString("nombre");
+                datos[2] = resultado.getString("cantidad");
+                datos[3] = resultado.getString("monto");
+                listaProductos.add(datos);
+                datos = new String[4];
             }
         } catch (SQLException ex) {
             Logger.getLogger(RegistroProveedores.class.getName()).log(Level.SEVERE, null, ex);
@@ -96,28 +96,122 @@ public class RegistroVenta extends RegistroBD {
         }
         return matriz;
     }
-    
-    public ArrayList<String[]> consultarVentas() {
+
+    public ArrayList<String[]> consultarVentas(int mes) {
         String[] datos = new String[3];
         ArrayList<String[]> listaVentas = new ArrayList<String[]>();
         try {
-            sql = "select * from tb_venta where month(fecha)=(select(month(sysdate())));";
+            sql = "select * from tb_venta ";//(select(month(sysdate())));";
+            switch (mes) {
+                case 0:
+                    sql= sql; 
+                case 1:
+                    sql = sql + "where month(fecha)= 1";
+                    break;
+                case 2:
+                    sql = sql + "where month(fecha)= 2";
+                    break;
+                case 3:
+                    sql = sql + "where month(fecha)= 3";
+                    break;
+                case 4:
+                    sql = sql + "where month(fecha)= 4";
+                    break;
+                case 5:
+                    sql = sql + "where month(fecha)= 5";
+                    break;
+                case 6:
+                    sql = sql + "where month(fecha)= 6";
+                    break;
+                case 7:
+                    sql = sql + "where month(fecha)= 7";
+                    break;
+                case 8:
+                    sql = sql + "where month(fecha)= 8";
+                    break;
+                case 9:
+                    sql = sql + "where month(fecha)= 9";
+                    break;
+                case 10:
+                    sql = sql + "where month(fecha)= 10";
+                    break;
+                case 11:
+                    sql = sql + "where month(fecha)= 11";
+                    break;
+                case 12:
+                    sql = sql + "where month(fecha)= 12";
+                    break;
+                    
+            }
             resultado = this.consulta(sql);
-            while(resultado.next()){
-            datos[0] = resultado.getString("id_venta");
-            datos[1] = resultado.getString("fecha");
-            datos[2] = resultado.getString("total");
-            listaVentas.add(datos);
-            datos=new String[4];
+            while (resultado.next()) {
+                datos[0] = resultado.getString("id_venta");
+                datos[1] = resultado.getString("fecha");
+                datos[2] = resultado.getString("total");
+                listaVentas.add(datos);
+                datos = new String[4];
             }
         } catch (SQLException ex) {
             Logger.getLogger(RegistroProveedores.class.getName()).log(Level.SEVERE, null, ex);
         }
         return listaVentas;
     }
+    
+    public double totalVentas(int mes) {
+        double total=0;
+        try {
+            sql = "select sum(total) from tb_venta ";
+            switch (mes) {
+                case 0:
+                    sql= sql; 
+                case 1:
+                    sql = sql + "where month(fecha)= 1";
+                    break;
+                case 2:
+                    sql = sql + "where month(fecha)= 2";
+                    break;
+                case 3:
+                    sql = sql + "where month(fecha)= 3";
+                    break;
+                case 4:
+                    sql = sql + "where month(fecha)= 4";
+                    break;
+                case 5:
+                    sql = sql + "where month(fecha)= 5";
+                    break;
+                case 6:
+                    sql = sql + "where month(fecha)= 6";
+                    break;
+                case 7:
+                    sql = sql + "where month(fecha)= 7";
+                    break;
+                case 8:
+                    sql = sql + "where month(fecha)= 8";
+                    break;
+                case 9:
+                    sql = sql + "where month(fecha)= 9";
+                    break;
+                case 10:
+                    sql = sql + "where month(fecha)= 10";
+                    break;
+                case 11:
+                    sql = sql + "where month(fecha)= 11";
+                    break;
+                case 12:
+                    sql = sql + "where month(fecha)= 12";
+                    break;          
+            }
+            resultado = this.consulta(sql);
+            resultado.next();
+            total=resultado.getDouble("sum(total)");
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistroProveedores.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return total;
+    }
 
-    public String[][] getMatrizVentas() {
-        ArrayList<String[]> listaVentas = consultarVentas();
+    public String[][] getMatrizVentas(int mes) {
+        ArrayList<String[]> listaVentas = consultarVentas(mes);
         String[][] matriz = new String[listaVentas.size()][3];
         for (int fila = 0; fila < matriz.length; fila++) {
             for (int columna = 0; columna < matriz[fila].length; columna++) {
