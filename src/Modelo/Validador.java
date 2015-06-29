@@ -94,6 +94,14 @@ public class Validador {
         }
     }
     
+     public static boolean validarCapacidad(String capacidad){
+       patron=Pattern.compile("\\d{0-9}");
+        match=patron.matcher(capacidad);
+        if(match.find()){
+            return true;
+        }
+        return false; 
+    }
     
     
     

@@ -491,4 +491,6 @@ public class GUIRegistroProcesadores extends javax.swing.JFrame {
     public static void mensaje(String mensaje) {
         JOptionPane.showMessageDialog(null, mensaje);
     }
+
+  
 }
