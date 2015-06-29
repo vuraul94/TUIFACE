@@ -55,6 +55,7 @@ public class ControlVenta implements ActionListener {
         }
         if (e.getActionCommand().equals(GUIVenta.BTN_FACTURAR)) {
             try {
+                registro.disminuirStock();
                 String[][] matrizVacia = new String[0][0];
                 guiVenta.setValores(matrizVacia, Venta.getEtiquetasFactura());
                 guiVenta.disableTodo();

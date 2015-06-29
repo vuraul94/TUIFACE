@@ -8,16 +8,10 @@ package Controlador;
 import Modelo.Compra;
 import Modelo.Producto;
 import Modelo.RegistroCompra;
-import Modelo.RegistroProductos;
-import Modelo.Venta;
+import Modelo.Validador;
 import Vista.GUICompra;
-import Vista.GUIPrincipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,38 +21,43 @@ import java.util.logging.Logger;
  * @author Né
  */
 public class ControlCompra implements ActionListener {
-    
+
     private RegistroCompra registroCompra;
     private Compra compra;
     private GUICompra guiCompra;
     private Producto producto;
+    private Validador validador;
 
     public ControlCompra(GUICompra guiCompra) throws SQLException, ClassNotFoundException {
-        this.registroCompra= new RegistroCompra();
-        this.guiCompra= guiCompra;
-        this.producto= producto;
+        this.registroCompra = new RegistroCompra();
+        this.validador = new Validador();
+        this.guiCompra = guiCompra;
+        this.producto = producto;
     }
 
-    
-    
     @Override
     public void actionPerformed(ActionEvent e) {
 
-    if (e.getActionCommand().equalsIgnoreCase(GUICompra.BTN_REGISTRAR)) {
-        try {
-            registroCompra.agregarCompra(guiCompra.getTxtIdProducto(),guiCompra.getTxtCantidad(),guiCompra.getTxtPrecio());
-        } catch (SQLException ex) {
-            Logger.getLogger(ControlCompra.class.getName()).log(Level.SEVERE, null, ex);
+        if (e.getActionCommand().equalsIgnoreCase(GUICompra.BTN_REGISTRAR)) {
+            if (validador.validarID(guiCompra.getTxtIdProducto())) {
+                if (validador.validarNumeros(guiCompra.getTxtCantidad())) {
+                    if (validador.validarNumeros(guiCompra.getTxtPrecio())) {
+                        try {
+                            System.out.println(guiCompra.getCboxProveedorSelected());
+                            registroCompra.agregarCompra(guiCompra.getTxtIdProducto(), Integer.parseInt(guiCompra.getTxtCantidad()), Double.parseDouble(guiCompra.getTxtPrecio()), guiCompra.getCboxProveedorSelected());
+                        } catch (SQLException ex) {
+                            Logger.getLogger(ControlCompra.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        guiCompra.limpiar();
+                    }else guiCompra.mensaje("Precio formato incorrecto");
+                }else guiCompra.mensaje("Cantidad formato incorrecto");
+            }else guiCompra.mensaje("ID formato incorrecto");
         }
-                    guiCompra.limpiar();
-                  
-
-    }
+        
         if (e.getActionCommand().equalsIgnoreCase(GUICompra.BTN_SALIR)) {
             this.guiCompra.dispose();
         }
-    
-    }
-    
-}
 
+    }
+
+}

@@ -29,9 +29,9 @@ public class RegistroProveedores extends RegistroBD {
         salida="";
         try {
              if (verificarID(proveedor.getIdProveedor()) == null) {
-            sql = "insert into tb_proveedor values("
+            sql = "insert into tb_proveedor values('"
                     +proveedor.getIdProveedor()
-                    +",'"+proveedor.getNombre()
+                    +"','"+proveedor.getNombre()
                     +"','"+proveedor.getDireccion()
                     +"','"+proveedor.getCorreo()
                     +"','"+proveedor.getTelefono()+"');";
@@ -70,7 +70,7 @@ public class RegistroProveedores extends RegistroBD {
         salida="";
         try {
             if (verificarID(proveedor.getIdProveedor()) != null) {
-                sql = "delete from tb_proveedor where ID_Proveedor="+proveedor.getIdProveedor()+";";
+                sql = "delete from tb_proveedor where ID_Proveedor='"+proveedor.getIdProveedor()+"';";
                 this.proceso(sql);
                 salida = "Se borró la información correctamente.";
             }else{
@@ -101,7 +101,7 @@ public class RegistroProveedores extends RegistroBD {
 
     public Proveedores verificarID(String id) {
         try {
-            sql = "select * from tb_proveedor where id_proveedor=" + id ;
+            sql = "select * from tb_proveedor where id_proveedor='" + id +"'";
             resultado = this.consulta(sql);
             while (resultado.next()) {
                 return new Proveedores(resultado.getString("id_proveedor"), resultado.getString("nombre"),resultado.getString("direccion"),resultado.getString("correo"),resultado.getString("telefono"));
@@ -115,7 +115,7 @@ public class RegistroProveedores extends RegistroBD {
     public String getListaProveedores(){
         salida="";
         for (Proveedores proveedor : this.consultarProveedores()) {
-            salida+="ID_Proveedor: "+proveedor.getIdProveedor()+"\tNombre: "+proveedor.getNombre()+"\n";
+            salida+="ID_Proveedor: '"+proveedor.getIdProveedor()+"'\tNombre: "+proveedor.getNombre()+"\n";
         }
         return salida;
     }
