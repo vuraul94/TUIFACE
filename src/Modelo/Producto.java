@@ -17,7 +17,7 @@ public class Producto {
     private String marca;
     private int precio;
     private int cantidad;
-    private static String[] etiquetas = {"Carnet", "Nombre", "Marca", "Precio", "Cantidad"};
+    private static String[] etiquetas = {"ID", "Nombre", "Marca", "Precio", "Cantidad"};
 
     public Producto(String idProducto, String nombre, String descripcion, String marca, int precio, int cantidad) {
         this.idProducto = idProducto;
@@ -83,7 +83,7 @@ public class Producto {
     public String getAtributo(int numeroAtributo) {
         switch (numeroAtributo) {
             case 0:
-                return String.valueOf(idProducto);
+                return idProducto;
             case 1:
                 return nombre;
             case 2:

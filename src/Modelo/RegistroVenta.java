@@ -250,3 +250,4 @@ public class RegistroVenta extends RegistroBD {
     }
 
 }
+
