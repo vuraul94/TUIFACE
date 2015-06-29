@@ -177,13 +177,13 @@ public class Inventario extends javax.swing.JFrame {
         }
     }
     
-    public int getIdSelected() {
+    public String getIdSelected() {
         String datos[] = new String[tbInventario.getColumnCount()];
         int filaSeleccionada = tbInventario.getSelectedRow();
         for (int columna = 0; columna < datos.length; columna++) {
             datos[columna] = tbInventario.getValueAt(filaSeleccionada, columna).toString().trim();
         }
-        int idSelected=Integer.parseInt(datos[0]);
+        String idSelected=datos[0];
         return idSelected;
     }
 }

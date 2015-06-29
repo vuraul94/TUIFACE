@@ -13,7 +13,7 @@ public class Compra extends Producto{
     private int cantidadCompra;
     private int precioCompra;
 
-    public Compra(int idProducto, int precioCompra ,int cantidadCompra, String nombre, String descripcion, String marca, int precio, int cantidad) {
+    public Compra(String idProducto, int precioCompra ,int cantidadCompra, String nombre, String descripcion, String marca, int precio, int cantidad) {
         super(idProducto, nombre, descripcion, marca, precio, cantidad);
         this.cantidadCompra = cantidadCompra;
         this.precioCompra = precioCompra;

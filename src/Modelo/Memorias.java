@@ -13,7 +13,7 @@ public class Memorias  extends Producto {
 
     String capacidad;
     
-    public Memorias(int idProducto,String nombre, String descripcion, String marca, int precio, int cantidad, String capacidad) {
+    public Memorias(String idProducto,String nombre, String descripcion, String marca, int precio, int cantidad, String capacidad) {
         super(idProducto,nombre, descripcion, marca, precio, cantidad);
         this.capacidad=capacidad;
     }

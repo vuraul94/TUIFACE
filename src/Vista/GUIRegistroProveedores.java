@@ -298,6 +298,10 @@ public class GUIRegistroProveedores extends javax.swing.JFrame {
        this.btnModificar.addActionListener(control);
        this.btnRegistrar.addActionListener(control);   
    } 
+   
+   public void escucharc(ActionListener validador){
+       this.txtCorreo.addActionListener(validador);
+   }
  
    public String getTxtNombre(){
     return this.txtNombre.getText().toString(); 
@@ -329,8 +333,8 @@ public class GUIRegistroProveedores extends javax.swing.JFrame {
         this.txtDireccion.setText(txtDireccion);
     }
    
-   public int getTxtID(){
-    return Integer.parseInt(txtID.getText().trim());
+   public String getTxtID(){
+    return txtID.getText().trim();
    
 }
    public void setTxtID(String txtID) {

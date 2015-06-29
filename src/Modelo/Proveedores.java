@@ -11,13 +11,13 @@ package Modelo;
  */
 public class Proveedores {
     
-    int idProveedor;
+    String idProveedor;
     String nombre;
     String direccion;
     String correo;
     String telefono;
 
-    public Proveedores(int idProveedor,String nombre, String direccion, String correo, String telefono) {
+    public Proveedores(String idProveedor,String nombre, String direccion, String correo, String telefono) {
         this.idProveedor=idProveedor;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -25,11 +25,11 @@ public class Proveedores {
         this.telefono = telefono;
     }
 
-    public int getIdProveedor() {
+    public String getIdProveedor() {
         return idProveedor;
     }
 
-    public void setIdProveedor(int idProveedor) {
+    public void setIdProveedor(String idProveedor) {
         this.idProveedor = idProveedor;
     }
 

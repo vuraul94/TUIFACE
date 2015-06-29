@@ -413,8 +413,8 @@ public class GUIRegistroProcesadores extends javax.swing.JFrame {
         this.btnRegistrar.addActionListener(control);
     }
 
-    public int getTxtCantidad() {
-        return Integer.parseInt(this.txtCantidad.getText());
+    public String getTxtCantidad() {
+        return this.txtCantidad.getText();
     }
 
     public void setTxtCantidad(String txtCantidad) {
@@ -429,8 +429,8 @@ public class GUIRegistroProcesadores extends javax.swing.JFrame {
         this.txtDescripción.setText(txtDescripcion);
     }
 
-    public int getTxtIdProducto() {
-        return Integer.parseInt(this.txtIdProducto.getText());
+    public String getTxtIdProducto() {
+        return this.txtIdProducto.getText();
     }
 
     public void setTxtIdProducto(String txtIdProducto) {
@@ -453,24 +453,24 @@ public class GUIRegistroProcesadores extends javax.swing.JFrame {
         this.txtNombre.setText(txtNombre);
     }
 
-    public int getTxtPrecio() {
-        return Integer.parseInt(this.txtPrecio.getText());
+    public String getTxtPrecio() {
+        return this.txtPrecio.getText();
     }
 
     public void setTxtPrecio(String txtPrecio) {
         this.txtPrecio.setText(txtPrecio);
     }
 
-    public int getTxtFrecuencia() {
-        return Integer.parseInt(this.txtFrecuencia.getText());
+    public String getTxtFrecuencia() {
+        return this.txtFrecuencia.getText();
     }
 
     public void setTxtFrecuencia(String txtFrecuencia) {
         this.txtFrecuencia.setText(txtFrecuencia);
     }
 
-    public int getTxtNucleos() {
-        return Integer.parseInt(this.txtNucleos.getText());
+    public String getTxtNucleos() {
+        return this.txtNucleos.getText();
     }
 
     public void setTxtNucleos(String txtNucleos) {

@@ -62,6 +62,8 @@ public class GUIRegistroComputadores extends javax.swing.JFrame {
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         txtIdProducto = new javax.swing.JFormattedTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
 
         jPanel5.setBackground(new java.awt.Color(52, 60, 122));
 
@@ -173,6 +175,10 @@ public class GUIRegistroComputadores extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        jLabel11.setText("GB");
+
+        jLabel12.setText("GB");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -207,14 +213,15 @@ public class GUIRegistroComputadores extends javax.swing.JFrame {
                         .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtRam)
                     .addComponent(txtProcesador)
-                    .addComponent(txtCantidad)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtRom, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtRom, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel12))
                             .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
@@ -222,7 +229,12 @@ public class GUIRegistroComputadores extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnBuscar)))
+                                .addComponent(btnBuscar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtRam, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel11))
+                            .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 16, Short.MAX_VALUE)))
                 .addGap(56, 56, 56))
         );
@@ -248,11 +260,13 @@ public class GUIRegistroComputadores extends javax.swing.JFrame {
                         .addGap(15, 15, 15)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(txtRom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtRom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
-                            .addComponent(txtRam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtRam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
@@ -303,6 +317,8 @@ public class GUIRegistroComputadores extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -339,8 +355,8 @@ public class GUIRegistroComputadores extends javax.swing.JFrame {
         this.btnRegistrar.addActionListener(control);
     }
 
-    public int getTxtCantidad() {
-        return Integer.parseInt(this.txtCantidad.getText());
+    public String getTxtCantidad() {
+        return this.txtCantidad.getText();
     }
 
     public void setTxtCantidad(String txtCantidad) {
@@ -355,8 +371,8 @@ public class GUIRegistroComputadores extends javax.swing.JFrame {
         this.txtDescripción.setText(txtDescripcion);
     }
 
-    public int getTxtIdProducto() {
-        return Integer.parseInt(this.txtIdProducto.getText());
+    public String getTxtIdProducto() {
+        return this.txtIdProducto.getText();
     }
 
     public void setTxtIdProducto(String txtIdProducto) {
@@ -379,24 +395,24 @@ public class GUIRegistroComputadores extends javax.swing.JFrame {
         this.txtNombre.setText(txtNombre);
     }
 
-    public int getTxtPrecio() {
-        return Integer.parseInt(this.txtPrecio.getText());
+    public String getTxtPrecio() {
+        return this.txtPrecio.getText();
     }
 
     public void setTxtPrecio(String txtPrecio) {
         this.txtPrecio.setText(txtPrecio);
     }
     
-    public int getTxtRom() {
-        return Integer.parseInt(this.txtRom.getText());
+    public String getTxtRom() {
+        return this.txtRom.getText();
     }
 
     public void setTxtRom(String txtRom) {
         this.txtRom.setText(txtRom);
     }
     
-    public int getTxtRam() {
-        return Integer.parseInt(this.txtRam.getText());
+    public String getTxtRam() {
+        return this.txtRam.getText();
     }
 
     public void setTxtRam(String txtRom) {

@@ -290,8 +290,8 @@ public class GUIRegistroOtros extends javax.swing.JFrame {
     }
 
 
-    public int getTxtCantidad() {
-        return Integer.parseInt(this.txtCantidad.getText());
+    public String getTxtCantidad() {
+        return this.txtCantidad.getText();
     }
 
     public void setTxtCantidad(String txtCantidad) {
@@ -306,8 +306,8 @@ public class GUIRegistroOtros extends javax.swing.JFrame {
         this.txtDescripción.setText(txtDescripcion);
     }
 
-    public int getTxtIdProducto() {
-        return Integer.parseInt(this.txtIdProducto.getText());
+    public String getTxtIdProducto() {
+        return this.txtIdProducto.getText();
     }
 
     public void setTxtIdProducto(String txtIdProducto) {
@@ -322,8 +322,8 @@ public class GUIRegistroOtros extends javax.swing.JFrame {
         this.txtMarca.setText(txtMarca);
     }
 
-    public int getTxtPrecio() {
-        return Integer.parseInt(this.txtPrecio.getText());
+    public String getTxtPrecio() {
+        return this.txtPrecio.getText();
     }
 
     public void setTxtPrecio(String txtPrecio) {

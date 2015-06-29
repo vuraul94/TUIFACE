@@ -68,6 +68,7 @@ public class ControlVenta implements ActionListener {
                 String[][] matrizVacia = new String[0][0];
                 guiVenta.setValores(matrizVacia, Venta.getEtiquetasFactura());
                 guiVenta.disableTodo();
+                guiVenta.setlbMontoFinal("0.0");
                 registro.cancelarVenta();
             } catch (SQLException ex) {
                 Logger.getLogger(ControlVenta.class.getName()).log(Level.SEVERE, null, ex);

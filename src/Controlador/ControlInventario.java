@@ -116,7 +116,7 @@ public class ControlInventario implements ActionListener, ItemListener, MouseLis
     @Override
     public void mouseClicked(MouseEvent e) {
 //        try {
-        int ID = inventario.getIdSelected();
+        String ID = inventario.getIdSelected();
         System.out.println(ID);
         String descripcion= registroProductos.verificarID(ID).getDescripcion();
         Descripcion guiDescripcion= new Descripcion((inventario), true);
