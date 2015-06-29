@@ -24,13 +24,14 @@ public class RegistroCompra extends RegistroBD {
     public RegistroCompra() throws SQLException, ClassNotFoundException {
         super();
     }
+    
+  
 
-    public String agregarCompra(Producto producto, int idProducto, int cantidad, int precio) throws SQLException {
+    public String agregarCompra( int IdProducto, int cantidad, int precio) throws SQLException {
         salida = "";
 
-        if (verificarIdProducto(producto.getIdProducto()) == null) {
 
-            sql = "select Precio from tb_productos where id_producto=" + idProducto;
+            sql = "select Precio from tb_productos where id_producto=" + IdProducto;
             resultado = this.consulta(sql);
             resultado.next();
             System.out.println(resultado.getDouble("Precio"));
@@ -41,12 +42,10 @@ public class RegistroCompra extends RegistroBD {
 
             sql = "update producto set cantidad = cantidad +'"
                     + cantidad + "'where IdProducto='"
-                    + producto.getIdProducto() + "';";
+                    + IdProducto+ "';";
             this.proceso(sql);
             salida = "se agrego";
-        } else {
-            salida = "no se agrego";
-        }
+        
         return salida;
 
     }
@@ -63,5 +62,7 @@ public class RegistroCompra extends RegistroBD {
         }
         return null;
     }
+
+    
 
 }

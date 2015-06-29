@@ -42,11 +42,11 @@ public class ControlValidador implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         
-       if (Validador.validarCantidad(guiCompra.getTxtCantidad())) {
-            System.out.println("la cantidad esta bien escrita");
-        } else {
-            System.out.println("hubo error al escribir la cantidad");
-        }
+//       if (Validador.validarCantidad(guiCompra.getTxtCantidad())) {
+//            System.out.println("la cantidad esta bien escrita");
+//        } else {
+//            System.out.println("hubo error al escribir la cantidad");
+//        }
        
 //       if (Validador.validarCantidad(guiReProcesadores.getTxtCantidad())) {     
 //            System.out.println("la cantidad esta bien escrita");
@@ -60,12 +60,12 @@ public class ControlValidador implements ActionListener{
 //            System.out.println("hubo error al escribir la cantidad");
 //        }
 //       
-       
-       if (Validador.validarPrecio(guiCompra.getTxtPrecio())) {
-            System.out.println("el precio  esta bien escrito");
-        } else {
-            System.out.println("hubo error al escribir el precio");
-        }
+//       
+//       if (Validador.validarPrecio(guiCompra.getTxtPrecio())) {
+//            System.out.println("el precio  esta bien escrito");
+//        } else {
+//            System.out.println("hubo error al escribir el precio");
+//        }
        
 //        if (Validador.validarPrecio(guiReProcesadores.getTxtPrecio())) {
 //            System.out.println("el precio  esta bien escrito");
@@ -133,4 +133,3 @@ public class ControlValidador implements ActionListener{
     
      
     }
-    

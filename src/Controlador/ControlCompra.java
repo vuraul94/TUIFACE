@@ -6,7 +6,10 @@
 package Controlador;
 
 import Modelo.Compra;
+import Modelo.Producto;
+import Modelo.RegistroCompra;
 import Modelo.RegistroProductos;
+import Modelo.Venta;
 import Vista.GUICompra;
 import Vista.GUIPrincipal;
 import java.awt.event.ActionEvent;
@@ -16,6 +19,8 @@ import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,13 +28,15 @@ import java.sql.SQLException;
  */
 public class ControlCompra implements ActionListener {
     
-    private RegistroProductos registroProductos;
+    private RegistroCompra registroCompra;
     private Compra compra;
-    private GUICompra guicompra;
+    private GUICompra guiCompra;
+    private Producto producto;
 
-    public ControlCompra(GUICompra guicompra) throws SQLException, ClassNotFoundException {
-        this.registroProductos = new RegistroProductos();
-        this.guicompra= guicompra;
+    public ControlCompra(GUICompra guiCompra) throws SQLException, ClassNotFoundException {
+        this.registroCompra= new RegistroCompra();
+        this.guiCompra= guiCompra;
+        this.producto= producto;
     }
 
     
@@ -38,15 +45,20 @@ public class ControlCompra implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
     if (e.getActionCommand().equalsIgnoreCase(GUICompra.BTN_REGISTRAR)) {
-            
+        try {
+            registroCompra.agregarCompra(guiCompra.getTxtIdProducto(),guiCompra.getTxtCantidad(),guiCompra.getTxtPrecio());
+        } catch (SQLException ex) {
+            Logger.getLogger(ControlCompra.class.getName()).log(Level.SEVERE, null, ex);
         }
+                    guiCompra.limpiar();
+                  
+
+    }
         if (e.getActionCommand().equalsIgnoreCase(GUICompra.BTN_SALIR)) {
-            this.guicompra.dispose();
+            this.guiCompra.dispose();
         }
     
     }
-
-  
-   
     
 }
+

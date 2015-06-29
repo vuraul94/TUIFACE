@@ -9,6 +9,7 @@ import Controlador.ControlCompra;
 import Controlador.ControlInventario;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -52,6 +53,8 @@ public class GUICompra extends javax.swing.JFrame {
         jLabel1.setText("ID Producto:");
 
         jLabel5.setText("Precio:");
+
+        txtPrecio.setEditable(false);
 
         jLabel6.setText("Cantidad:");
 
@@ -203,25 +206,35 @@ public class GUICompra extends javax.swing.JFrame {
        this.btnSalir.addActionListener(control);
    }
    
-    public String getTxtCantidad(){
-    return this.txtCantidad.getText().toString(); 
+    public int getTxtCantidad(){
+    return Integer.parseInt(this.txtCantidad.getText());
 }
    public void setTxtCantidad(String txtCantidad) {
         this.txtCantidad.setText(txtCantidad);
     }
    
-   public String getTxtIdProducto(){
-    return this.txtIdProducto.getText().toString(); 
+   public int getTxtIdProducto(){
+   return Integer.parseInt(this.txtIdProducto.getText());
 }
    public void setTxtIdProducto(String txtIdProducto) {
         this.txtIdProducto.setText(txtIdProducto);
     }
    
-   public String getTxtPrecio(){
-    return this.txtPrecio.getText().toString(); 
+   public int getTxtPrecio(){
+    return Integer.parseInt(this.txtPrecio.getText());
 }
    public void setTxtPrecio(String txtPrecio) {
         this.txtPrecio.setText(txtPrecio);
+    }
+   
+    public void limpiar(){
+        this.txtCantidad.setText("");
+        this.txtIdProducto.setText("");
+        this.txtPrecio.setText("");
+    }
+    
+    public void mensaje(String mensaje){
+        JOptionPane.showMessageDialog(null, mensaje);
     }
    
 }
