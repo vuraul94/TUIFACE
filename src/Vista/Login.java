@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import Modelo.RegistroUsuario;
+import java.sql.SQLException;
 import org.jdom2.JDOMException;
 
 

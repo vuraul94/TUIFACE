@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import Modelo.RegistroBD;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -14,6 +15,7 @@ import org.jdom2.JDOMException;
 import Vista.BtnsLogin;
 import Vista.GUIPrincipal;
 import Vista.Login;
+import java.sql.SQLException;
 
 /**
  *
@@ -27,7 +29,6 @@ public class ControlLogin implements ActionListener {
 
     public ControlLogin(Login login) throws JDOMException, IOException {
         this.login = login;
-        
         File archivoXML = new File("usuarios.xml");
         if (archivoXML.exists()) {
             registro = RegistroUsuario.abrirDocumento("usuarios.xml");
@@ -44,7 +45,7 @@ public class ControlLogin implements ActionListener {
             } else if (login.getTxtPassword().equals("")) {
                 login.mensaje("Introduzca contraseña");
             } else {
-                if (registro.verificarLogin(login.getTxtUsuario(),login.getTxtPassword())) {
+                if (registro.verificarLogin(login.getTxtUsuario(),login.getTxtPassword())) { 
                     GUIPrincipal guiPrincipal = new GUIPrincipal();
                     guiPrincipal.setVisible(true);
                     login.dispose();
