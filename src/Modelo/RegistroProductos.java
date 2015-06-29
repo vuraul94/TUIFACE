@@ -31,9 +31,9 @@ public class RegistroProductos extends RegistroBD {
     public boolean incluirProductos(Producto producto) {
         try {
             if (verificarID(producto.getIdProducto()) == null) {
-                sql = "insert into tb_productos values("
+                sql = "insert into tb_productos values('"
                         + producto.getIdProducto()
-                        + ",'" + producto.getNombre()
+                        + "','" + producto.getNombre()
                         + "','" + producto.getMarca()
                         + "','" + producto.getPrecio()
                         + "','" + producto.getCantidad()
@@ -57,7 +57,7 @@ public class RegistroProductos extends RegistroBD {
                         + "', precio='" + producto.getPrecio()
                         + "',cantidad='" + producto.getCantidad()
                         + "',descripcion='" + producto.getDescripcion()
-                        + "' where id_producto not in (select id_producto from tb_procesadores) and id_producto=" + producto.getIdProducto() + ";";
+                        + "' where id_producto not in (select id_producto from tb_procesadores) and id_producto='" + producto.getIdProducto() + "';";
                 this.proceso(sql);
                 salida = "La información se actualizó correctamente.";
             } else {
@@ -73,7 +73,7 @@ public class RegistroProductos extends RegistroBD {
         salida = "";
         try {
             if (verificarID(producto.getIdProducto()) != null) {
-                sql = "delete from tb_productos where id_producto not in (select id_producto from tb_procesadores) and ID_Producto=" + producto.getIdProducto() + ";";
+                sql = "delete from tb_productos where id_producto not in (select id_producto from tb_procesadores) and ID_Producto='" + producto.getIdProducto() + "';";
                 this.proceso(sql);
                 salida = "Se borró la información correctamente.";
             } else {
@@ -104,9 +104,9 @@ public class RegistroProductos extends RegistroBD {
         salida = "";
         try {
             if (verificarIDProcesador(procesador.getIdProducto()) == null) {
-                sql = "insert into tb_procesadores values("
+                sql = "insert into tb_procesadores values('"
                         + procesador.getIdProducto()
-                        + ",'" + procesador.getNucleos()
+                        + "','" + procesador.getNucleos()
                         + "','" + procesador.getFrecuencia()
                         + "');";
                 this.proceso(sql);
@@ -126,14 +126,14 @@ public class RegistroProductos extends RegistroBD {
             if (verificarIDProcesador(procesador.getIdProducto()) != null) {
                 sql = "update tb_procesadores set nucleos='" + procesador.getNucleos()
                         + "', frecuencia='" + procesador.getFrecuencia()
-                        + "' where id_producto=" + procesador.getIdProducto() + ";";
+                        + "' where id_producto='" + procesador.getIdProducto() + "';";
                 this.proceso(sql);
                 sql2 = "update tb_productos set nombre='" + procesador.getNombre()
                         + "', marca='" + procesador.getMarca()
                         + "', precio='" + procesador.getPrecio()
                         + "',cantidad='" + procesador.getCantidad()
                         + "',descripcion='" + procesador.getDescripcion()
-                        + "' where id_producto=" + procesador.getIdProducto() + ";";
+                        + "' where id_producto='" + procesador.getIdProducto() + "';";
                 this.proceso(sql2);
 
                 salida = "La información se actualizó correctamente.";
@@ -150,7 +150,7 @@ public class RegistroProductos extends RegistroBD {
         salida = "";
         try {
             if (verificarID(procesador.getIdProducto()) != null) {
-                sql = "delete from tb_procesadores where ID_Producto=" + procesador.getIdProducto() + ";";
+                sql = "delete from tb_procesadores where ID_Producto='" + procesador.getIdProducto() + "';";
                 this.proceso(sql);
                 salida = "Se borró la información correctamente.";
             } else {
@@ -182,9 +182,9 @@ public class RegistroProductos extends RegistroBD {
         salida = "";
         try {
             if (verificarIDMemoria(memoria.getIdProducto()) == null) {
-                sql = "insert into tb_memorias values("
+                sql = "insert into tb_memorias values('"
                         + memoria.getIdProducto()
-                        + ",'" + memoria.getCapacidad()
+                        + "','" + memoria.getCapacidad()
                         + "');";
                 this.proceso(sql);
                 salida = "La información se agregó correctamente.";
@@ -202,14 +202,14 @@ public class RegistroProductos extends RegistroBD {
         try {
             if (verificarIDMemoria(memoria.getIdProducto()) != null) {
                 sql = "update tb_memorias set capacidad='" + memoria.getCapacidad()
-                        + "' where id_producto=" + memoria.getIdProducto() + ";";
+                        + "' where id_producto='" + memoria.getIdProducto() + "';";
                 this.proceso(sql);
                 sql2 = "update tb_productos set nombre='" + memoria.getNombre()
                         + "', marca='" + memoria.getMarca()
                         + "', precio='" + memoria.getPrecio()
                         + "',cantidad='" + memoria.getCantidad()
                         + "',descripcion='" + memoria.getDescripcion()
-                        + "' where id_producto=" + memoria.getIdProducto() + ";";
+                        + "' where id_producto='" + memoria.getIdProducto() + "';";
                 this.proceso(sql2);
 
                 salida = "La información se actualizó correctamente.";
@@ -226,7 +226,7 @@ public class RegistroProductos extends RegistroBD {
         salida = "";
         try {
             if (verificarID(memoria.getIdProducto()) != null) {
-                sql = "delete from tb_memorias where ID_Producto=" + memoria.getIdProducto() + ";";
+                sql = "delete from tb_memorias where ID_Producto='" + memoria.getIdProducto() + "';";
                 this.proceso(sql);
                 salida = "Se borró la información correctamente.";
             } else {
@@ -258,9 +258,9 @@ public class RegistroProductos extends RegistroBD {
         salida = "";
         try {
             if (verificarIDComputador(computador.getIdProducto()) == null) {
-                sql = "insert into tb_computadores values("
+                sql = "insert into tb_computadores values('"
                         + computador.getIdProducto()
-                        + "," + computador.getRom()
+                        + "'," + computador.getRom()
                         + "," + computador.getRam()
                         + ",'" + computador.getProcesador()
                         + "');";
@@ -282,14 +282,14 @@ public class RegistroProductos extends RegistroBD {
                 sql = "update tb_computadores set rom='" + computador.getRom()
                         + "', ram='" + computador.getRam()
                         + "', procesador='" + computador.getProcesador()
-                        + "' where id_producto=" + computador.getIdProducto() + ";";
+                        + "' where id_producto='" + computador.getIdProducto() + "';";
                 this.proceso(sql);
                 sql2 = "update tb_productos set nombre='" + computador.getNombre()
                         + "', marca='" + computador.getMarca()
                         + "', precio='" + computador.getPrecio()
                         + "',cantidad='" + computador.getCantidad()
                         + "',descripcion='" + computador.getDescripcion()
-                        + "' where id_producto=" + computador.getIdProducto() + ";";
+                        + "' where id_producto='" + computador.getIdProducto() + "';";
                 this.proceso(sql2);
 
                 salida = "La información se actualizó correctamente.";
@@ -306,7 +306,7 @@ public class RegistroProductos extends RegistroBD {
         salida = "";
         try {
             if (verificarIDComputador(computador.getIdProducto()) != null) {
-                sql = "delete from tb_computadores where ID_Producto=" + computador.getIdProducto() + ";";
+                sql = "delete from tb_computadores where ID_Producto='" + computador.getIdProducto() + "';";
                 this.proceso(sql);
                 salida = "Se borró la información correctamente.";
             } else {
@@ -353,7 +353,7 @@ public class RegistroProductos extends RegistroBD {
     public String getListaProductos() {
         salida = "";
         for (Producto producto : this.consultarProductos()) {
-            salida += "ID_Producto: " + producto.getIdProducto() + "\tNombre: " + producto.getNombre() + "\n";
+            salida += "ID_Producto: '" + producto.getIdProducto() + "'\tNombre: '" + producto.getNombre() + "'\n";
         }
         return salida;
     }
